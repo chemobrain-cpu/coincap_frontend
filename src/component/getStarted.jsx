@@ -53,7 +53,7 @@ function GetStarted({ navigateToApp }) {
                     <div className={styles.getStartedSection_imageCon_buttonCon}>
                         <button className={styles.getStartedSection_imageCon_button}>
                             <a href="application-685acef6-f522-4104-a696-21a3b8346fa2.apk" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <span className={styles.buttonText}> Download on android </span>
+                                <span className={styles.buttonText}> Download on android..</span>
 
                                 <i className='material-icons' style={{ color: 'grey', fontSize: 35 }}>android</i>
 

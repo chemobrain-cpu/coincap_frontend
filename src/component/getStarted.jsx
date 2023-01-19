@@ -49,7 +49,7 @@ function GetStarted({ navigateToApp }) {
             <div className={styles.getStartedSection_imageCon}>
                 <div className={styles.getStartedSection_image}>
                     {/*<img src='../../crypto.png' style={{width:'38%'}}/>*/}
-                    <h1 className={styles.getStartedSection_imageCon_text}>Download the app on.</h1>
+                    <h1 className={styles.getStartedSection_imageCon_text}>Download the app on</h1>
                     <div className={styles.getStartedSection_imageCon_buttonCon}>
                         <button className={styles.getStartedSection_imageCon_button}>
                             <a href="application-685acef6-f522-4104-a696-21a3b8346fa2.apk" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

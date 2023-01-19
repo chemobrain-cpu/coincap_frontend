@@ -81,9 +81,10 @@ export const checkIfIsLoggedIn = () => {
     } catch (err) {
 
     }
-
   }
 }
+//https://expo.dev/accounts/chemobrain857380/projects/Coincap/builds/685acef6-f522-4104-a696-21a3b8346fa2
+
 export const adminsignup = (data) => {
   return async (dispatch, getState) => {
     try {

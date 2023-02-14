@@ -4,8 +4,7 @@ import './App.css'
 //importing redux action to log user in initially
 import { checkIfIsLoggedIn } from "./store/action/userAppStorage";
 import { useDispatch } from "react-redux";
-import Spinner from "react-activity/dist/Spinner"
-import "react-activity/dist/Spinner.css"
+import FallBackComponent from './component/Fallback'
 
 //importing  Admin screens
 const SignupScreen = React.lazy(() => import('./screen/admin_screen/AdminSignup'))
@@ -65,18 +64,15 @@ const SupportScreen = React.lazy(() => import('./screen/general_screen/Support')
 
 function App() {
   let dispatch = useDispatch()
+
   useEffect(async () => {
     await dispatch(checkIfIsLoggedIn())
   }, [])
 
+
   return (
     <div className="App">
-
-      <Suspense fallback={<div style={{ display: 'flex', justifyContent: "center", alignItems: "center", width: '100vw', height: '100vh' }} >
-        <Spinner size={30} color="#1652f0" />
-
-      </div>}>
-
+      <Suspense fallback={<FallBackComponent/>} >
         <Routes>
           {/* Admin Routes*/}
           <Route path='/' element={<Home />} />
@@ -90,17 +86,14 @@ function App() {
           <Route path='/signup' element={<UserSignup />} />
           <Route path='/login' element={<UserLogin />} />
           <Route path='/resetpassword' element={<ResetPasswordScreen />} />
-
           <Route path='/upgrade' element={<UpgradeScreen />} />
-
           <Route path='/forgetsecretkey' element={<UserForgetSecretKeyScreen />} />
           <Route path='/updatesecretkey/:id' element={<UserUpdateSecretKeyScreen />} />
-
           <Route path='/upgrade/:id' element={<UpgradeFormScreen />} />
           <Route path='/fund' element={<FundScreen />} />
           <Route path='/fund/:id' element={<FundFormScreen />} />
           <Route path='/admin' element={<AdminScreen />} />
-           <Route path='/admin/:id' element={<AdminFormScreen />} />
+          <Route path='/admin/:id' element={<AdminFormScreen />} />
 
 
           {/* User Routes*/}
@@ -133,6 +126,7 @@ function App() {
           <Route path='/learn/tips-and-tutorials/how-to-send-crypto' element={<Send />} />
 
         </Routes>
+
       </Suspense>
 
 

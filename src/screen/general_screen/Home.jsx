@@ -12,15 +12,16 @@ import InfoSection from "../../component/Info"
 import Action from "../../component/action"
 import Footer from "../../component/Footer"
 import Modal from "../../component/Modal/DownloadModal"
-//import routers
 
-//let { admin} = useSelector(state => state.userAuth)
+
+
 function Home() {
   
     let [showModal, setShowModal] = useState(false)
     const closeModal = () => {
         setShowModal(false)
     }
+
     const navigateToApp = ()=>{
         setShowModal(true)
 
@@ -31,13 +32,21 @@ function Home() {
     return (<>
         {showModal && <Modal showModal={showModal} closeModal={closeModal} content={"continue on the mobile app"} />}
         <NavBar navigateToApp ={navigateToApp}/>
+
         <GetStarted navigateToApp ={navigateToApp}/>
+
         <CoinSection navigateToApp ={navigateToApp}/>
+
         <EarnSection navigateToApp ={navigateToApp}/>
+
         <PortfolioSection navigateToApp ={navigateToApp}/>
+
         <SecuritySection navigateToApp ={navigateToApp}/>
+
         <InfoSection navigateToApp ={navigateToApp}/>
+
         <Action navigateToApp ={navigateToApp}/>
+        
         <Patner/>
         
         <EarningSection navigateToApp ={navigateToApp}/>

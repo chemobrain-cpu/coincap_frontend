@@ -7,7 +7,7 @@
 }
 
 .sectionhead_section h1 {
-    font-size: 2rem;
+    font-size: 3rem;
     font-family: poppins;
     font-weight: 700;
     margin-bottom: 15px;
@@ -26,17 +26,14 @@
 
 
 @media screen and (max-width: 750px) {
-    .sectionhead_section h1 {
-        text-align: center;
-        width: 70%
-    }
-
     .sectionhead_section p {
         text-align: center;
         width: 90%
     }
     .sectionhead_section h1 {
-        font-size: 1.7rem;
+        font-size: 2rem;
+        text-align: center;
+        width: 80%
     }
 
 

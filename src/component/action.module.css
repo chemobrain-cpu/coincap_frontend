@@ -1,6 +1,6 @@
 .action_section {
-    padding-bottom: 50px;
-    padding-top: 20px;
+    padding-bottom: 120px;
+    padding-top: 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,7 +21,7 @@
 
 }
 .action i{
-    font-size:4rem;
+    font-size:5rem;
     margin-bottom: 30px;
     color:var(--color-blue)
 }

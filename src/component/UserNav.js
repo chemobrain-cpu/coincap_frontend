@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from './Button';
-import { Link } from 'react-router-dom';
 import styles from './UserNav.module.css';
-import {useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 function Nav({navigateToApp}) {
 
@@ -10,7 +10,6 @@ function Nav({navigateToApp}) {
     let handleNavigate = (url) => {
         navigate(url)
     }
-
 
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -117,46 +116,7 @@ function Nav({navigateToApp}) {
                 onClick={closeIndividualDesktop}
               >
               </Link>
-              {/*<div className={styles.nav_link_small} onClick={showIndividualLinkHandler}>
-                <button>
-                  Individuals
-
-                </button>
-                <i className='material-icons'>
-                  {showIndividualLink ? 'arrow_drop_down' : 'arrow_right'}
-
-                </i>
-
-              </div>*/}
               
-              {/*showIndividualLink && <ul
-                to='/products'
-                className={styles.nav_link_list_con}
-                onClick={closeMobileMenu}
-              >
-                <li className={styles.nav_link_list}>Buy and sell</li>
-                <li className={styles.nav_link_list}>Earn</li>
-                <li className={styles.nav_link_list}>Borrow</li>
-                <li className={styles.nav_link_list}>Learning Rewards</li>
-                <li className={styles.nav_link_list}>NFT</li>
-                <li className={styles.nav_link_list}>Dirivatives</li>
-              </ul>*/}
-
-              {/*showIndividualsHiddenDesktopBlock && <div className={styles.hiddenblock}>
-                <ul>
-                  <li >Buy and sell</li>
-                  <li  onClick={()=>alert('clicked me')}>Earn</li>
-                  <li >NFT</li>
-                  
-
-                </ul>
-                <ul>
-                  <li >Borrow</li>
-                  <li >Learning Rewards</li>
-                  <li  onClick={()=>alert('clicked me')}>Dirivatives</li>
-
-                </ul>
-              </div>*/}
 
             </li>
 
@@ -165,8 +125,7 @@ function Nav({navigateToApp}) {
                 to='/learn'
                 className={styles.nav_link}
                 onClick={closeLearnDesktop}
-                style={{backgroundColor:'rgb(240,240,240)',padding:'12px',fontWeight:400,color:'#1652f0',}}
-              >
+                style={{border:'1px solid #1652f0',color:'#1652f0',width:'120px',paddingTop:'12px',paddingBottom:'12px',fontWeight:'100px'}}>
                 Learn Basics
               </Link>
 
@@ -194,66 +153,12 @@ function Nav({navigateToApp}) {
 
               </ul>}
 
-              {/*showLearnHiddenDesktopBlock && <div className={styles.hiddenblock}>
-                <ul>
-                  <li >Tips & Tutorials</li>
-                  <li  onClick={()=>alert('clicked me')}>Crypto basics</li>
-
-                </ul>
-               
-              </div>*/}
+              
 
             </li>
 
 
-            {/*<li className={styles.nav_item}>
-              
-              <Link
-                to="/"
-                className={styles.nav_link}
-                onClick={closeCompanyDesktop}
-              >
-                Company
-              </Link>
-              
-              <div className={styles.nav_link_small} onClick={showCompanyLinkHandler}>
-                <button>
-                  Company
-
-                </button>
-                <i className='material-icons'>
-                  {showCompanyLink ? 'arrow_drop_down' : 'arrow_right'}
-
-                </i>
-
-              </div>
-
-              {showCompanyLink && <ul
-                
-                className={styles.nav_link_list_con}
-                onClick={showCompanyLinkHandler}
-              >
-                <li className={styles.nav_link_list}>About</li>
-                <li className={styles.nav_link_list}>Careers</li>
-                <li className={styles.nav_link_list}>Blog</li>
-                <li className={styles.nav_link_list}>Security</li>
-              </ul>}
-
-              {/*showCompanyHiddenDesktopBlock && <div className={styles.hiddenblock}>
-                <ul>
-                  <li >About</li>
-                  <li  onClick={()=>alert('clicked me')}>Careers</li>
-
-                </ul>
-                <ul>
-                  <li >Blog</li>
-                  <li >Security</li>
-
-                </ul>
-              </div>
-
-
-            </li>*/}
+            
 
             <div className={styles.smbuttonContainer}>
               <li className={styles.nav_links_mobile_con}>

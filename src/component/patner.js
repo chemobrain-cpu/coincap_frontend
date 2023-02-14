@@ -14,15 +14,10 @@ function Patner() {
     })
 
     return (
-        <div className={styles.patnerSection} data-aos="fade-up">
-
-
+        <div className={styles.patnerSection} >
             <div className={styles.sectionhead_section} data-aos="fade-up" >
                 <h1>Our patners</h1>
-                
             </div>
-
-
 
 
             <div className={styles.imageBox}>
@@ -32,19 +27,19 @@ function Patner() {
 
 
 
-                    <div className={styles.imageCard}>
-                        <img src={"../../quorom.png"} style={{ width: '50%' }} />
+                    <div className={styles.imageCard} data-aos="fade-up">
+                        <img src={"../../quorom.png"} style={{ width: '60%' }} />
 
                     </div>
 
-                    <div className={styles.imageCard}>
+                    <div className={styles.imageCard} data-aos="fade-up">
                         <img src={"../../blockchain2.png"} style={{ width: '100%' }} />
 
                     </div>
                     
 
-                    <div className={styles.imageCard}>
-                        <img src={"../../bitwala_icon.png"} style={{ width: '50%' }} />
+                    <div className={styles.imageCard} data-aos="fade-up">
+                        <img src={"../../bitwala_icon.png"} style={{ width: '60%' }} />
 
                     </div>
 
@@ -66,22 +61,20 @@ function Patner() {
 
 
 
-                    <div className={styles.imageCard}>
-                        <img src={"../../luno_icon.jpg"} style={{ width: '50%' }} />
+                    <div className={styles.imageCard} data-aos="fade-up">
+                        <img src={"../../luno_icon.jpg"} style={{ width: '60%' }} />
 
                     </div>
 
-                    <div className={styles.imageCard}>
-                        <img src={"../../paypal_icon.jpg"} style={{ width: '70%' }} />
+                    
+
+                    <div className={styles.imageCard} data-aos="fade-up">
+                        <img src={"../../telsa_icon.jpg"} style={{ width: '60%' }} />
 
                     </div>
 
-                    <div className={styles.imageCard}>
-                        <img src={"../../telsa_icon.jpg"} style={{ width: '70%' }} />
-
-                    </div>
-                    <div className={styles.imageCard}>
-                        <img src={"../../wallmart_icon.jpg"} style={{ width: '70%' }} />
+                    <div className={styles.imageCard} data-aos="fade-up">
+                        <img src={"../../wallmart_icon.jpg"} style={{ width: '60%' }} />
 
                     </div>
 

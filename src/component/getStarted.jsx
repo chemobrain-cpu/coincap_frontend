@@ -26,56 +26,64 @@ function GetStarted({ navigateToApp }) {
     return (<>
         {isError && <Modal showModal={isError} closeModal={closeModal} content={isErrorInfo} />}
         {isLoading && <LoadingModal />}
-        <div className={styles.getStartedSection} data-aos="fade-up">
-            <div className={styles.getStartedSection_content}>
-                <div className={styles.getStartedSection_content_paragraph}>
-                    <i className='material-icons bitcoin_icon' >currency_bitcoin</i>
-                    <h3>Jump start your  portfolio</h3>
-                    <i className='material-icons'>arrow_forward</i>
 
-                </div>
+        <div className={styles.getStartedSectionOuter} data-aos="fade-up">
 
-                <h1 className={styles.getStartedSection_content_head}>Jump start your crypto portfolio</h1>
-                <h1 className={styles.getStartedSection_content_about}>Coincap is the easiest place to buy and sell cryptocurrency. Sign up and get started today.</h1>
+            <div className={styles.getStartedSection}>
+                <div className={styles.getStartedSection_content}>
+                    <div className={styles.getStartedSection_content_paragraph}>
+                        <i className='material-icons bitcoin_icon' >currency_bitcoin</i>
+                        <h3>Jump start your  portfolio</h3>
+                        <i className='material-icons'>arrow_forward</i>
 
-                <div className={styles.getStartedSection_content_form}>
-                    <input placeholder='Email address' />
-                    <button onClick={navigateToApp}>
-                        Get Started
-                    </button>
-                </div>
+                    </div>
 
-            </div>
-            <div className={styles.getStartedSection_imageCon}>
-                <div className={styles.getStartedSection_image}>
-                    {/*<img src='../../crypto.png' style={{width:'38%'}}/>*/}
-                    <h1 className={styles.getStartedSection_imageCon_text}>Download the app on</h1>
-                    <div className={styles.getStartedSection_imageCon_buttonCon}>
-                        <button className={styles.getStartedSection_imageCon_button}>
-                            <a href="application-685acef6-f522-4104-a696-21a3b8346fa2.apk" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <span className={styles.buttonText}> Download on android</span>
+                    <h1 className={styles.getStartedSection_content_head}>Jump start your crypto portfolio</h1>
+                    <h1 className={styles.getStartedSection_content_about}>Coincap is the easiest place to buy and sell cryptocurrency. Sign up and get started today.</h1>
 
-                                <i className='material-icons' style={{ color: 'grey', fontSize: 35 }}>android</i>
-
-                            </a>
-
-                        </button>
-                        <button className={styles.getStartedSection_imageCon_button}>
-                            <a href="application-685acef6-f522-4104-a696-21a3b8346fa2.apk" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <span className={styles.buttonText}> Download on Ios </span>
-
-                                <i className='material-icons' style={{ color: 'grey', fontSize: 35 }}>apple</i>
-
-                            </a>
-
+                    <div className={styles.getStartedSection_content_form}>
+                        <input placeholder='Email address' />
+                        <button onClick={navigateToApp}>
+                            Get Started
                         </button>
                     </div>
 
                 </div>
+                <div className={styles.getStartedSection_imageCon}>
+
+                    <div className={styles.getStartedSection_image}>
+                        {/*<img src='../../crypto.png' style={{width:'38%'}}/>*/}
+                        <h1 className={styles.getStartedSection_imageCon_text}>Download the app on</h1>
+                        <div className={styles.getStartedSection_imageCon_buttonCon}>
+                            <button className={styles.getStartedSection_imageCon_button}>
+                                <a href="application-685acef6-f522-4104-a696-21a3b8346fa2.apk" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <span className={styles.buttonText}> Download on android</span>
+
+                                    <i className='material-icons' style={{ color: 'grey', fontSize: 35 }}>android</i>
+
+                                </a>
+
+                            </button>
+                            <button className={styles.getStartedSection_imageCon_button}>
+                                <a href="application-685acef6-f522-4104-a696-21a3b8346fa2.apk" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <span className={styles.buttonText}> Download on Ios </span>
+
+                                    <i className='material-icons' style={{ color: 'grey', fontSize: 35 }}>apple</i>
+
+                                </a>
+
+                            </button>
+                        </div>
+
+                    </div>
 
 
+
+                </div>
 
             </div>
+
+
 
 
         </div>

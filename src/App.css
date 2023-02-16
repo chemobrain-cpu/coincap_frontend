@@ -7,12 +7,20 @@
     --color-fade: rgb(240, 240, 240);
     --color-background: #fff;
     --color-blue: #1652f0;
-    background-color:#fff;
+     background-color:#fff;
+    --fadeText:rgb(100,100,100);
+    --headColor:rgb(50,50,50);
+    --color-black:black
+
 }
 
 ::placeholder {
     font-size: 1.3rem;
-    padding-left: 20%
+    padding-left: 10px;
+    text-align: left;
+    width:100%;
+    color:rgb(100,100,100);
+    font-weight: lighter;
 }
 
 ::-webkit-scrollbar {

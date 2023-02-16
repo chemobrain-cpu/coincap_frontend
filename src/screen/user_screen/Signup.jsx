@@ -2,11 +2,8 @@ import React, { useState, useCallback } from 'react';
 import styles from './signup.module.css';
 //importing modals
 import LoadingModal from "../../component/Modal/LoadingModal"
-import Modal from "../../component/Modal/SignupModal"
-//import nav bar
-import NavBar from "../../component/UserNav"
-import Footer from "../../component/Footer"
-import FormInput from "../../component/input-card/input"
+import Modal from "../../component/Modal/SignupModal";
+import FormInput from "../../component/input-card/input";
 import SubmitBtn from "../../component/Submit";
 import { signup } from "../../store/action/userAppStorage";
 import { useDispatch } from "react-redux";
@@ -89,54 +86,152 @@ function SignupScreen() {
     return (<>
         {isError && <Modal showModal={isError} closeModal={closeModal} content={isErrorInfo} />}
         {isLoading && <LoadingModal />}
-        <NavBar current="login" />
-        <form className={styles.form_container} onSubmit={submitHandler}>
-            <h1>Sign up on coincap</h1>
-            <FormInput
-                icon='edit'
-                label='First Name'
-                type='text'
-                className="formcard"
-                setFormDetails={setFormDetails}
-                formName="userFirstName"
-            />
-            <FormInput
-                icon='edit'
-                label='Last Name'
-                type='text'
-                className="formcard"
-                setFormDetails={setFormDetails}
-                formName="userLastName"
-            />
-            <FormInput
-                icon='edit'
-                label='Email'
-                type='email'
-                className="formcard"
-                setFormDetails={setFormDetails}
-                formName="userEmail"
-            />
-            <FormInput
-                icon='edit'
-                label='Password'
-                type='number'
-                types="password"
-                className="formcard"
-                formName="userPassword"
-                setFormDetails={setFormDetails}
-            />
+        <div className={styles.signupNavigation}>
+
+            <div className={styles.navigationLeft}>
+                <span className='material-icons'>
+                    arrow_backward
+                </span>
+
+            </div>
+            <div className={styles.navigationRight}>
+                <button onClick={()=>navigateHandler('/login')}>
+                    Sign In
+                </button>
+
+            </div>
+        </div>
+
+        <div className={styles.form_screen} >
+
+            <div className={styles.form_outercontainer}>
+                <form className={styles.form_container} onSubmit={submitHandler}>
+                    <h1 className={styles.heading}>Create an account</h1>
+
+                    <div className={styles.info_section}>
+                        <div className={styles.info_left}>
+                            <h2>Do more with crypto, only on Coincap</h2>
+                            <p>Set up your account and verify your photo ID to get started on trading crypto.</p>
+
+                        </div>
+
+                        <div className={styles.info_right}>
+                            <img src='../../signup.png' />
+
+                        </div>
+
+                    </div>
+
+                    <p className={styles.requiredText}>Required fields have an asterisk: *</p>
 
 
-            <SubmitBtn style={{ opacity: isFormValid ? 1 : 0.5 }} text="Signup" />
 
-            <div className={styles.piracyContainer} >
-                <p onClick={() => navigateHandler('/login')}>Login instead</p>
-                <p onClick={() => navigateHandler('/policy')}>Privacy Policy</p>
+                    <div className={styles.inputContainer}>
+                        <div className={styles.inputLeft}>
+                            <FormInput
+                                icon='edit'
+                                label='First Name'
+                                type='text'
+                                className="formcard"
+                                setFormDetails={setFormDetails}
+                                formName="userFirstName"
+                                placeholder='First name'
+                            />
+
+                        </div>
+
+                        <div className={styles.inputRight}>
+                            <FormInput
+                                icon='edit'
+                                label='Last Name'
+                                type='text'
+                                className="formcard"
+                                setFormDetails={setFormDetails}
+                                formName="userLastName"
+                                placeholder='Last name'
+                            />
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
+
+                    <FormInput
+                        icon='edit'
+                        label='Email'
+                        type='email'
+                        className="formcard"
+                        setFormDetails={setFormDetails}
+                        formName="userEmail"
+                        placeholder='Email'
+                    />
+                    <FormInput
+                        icon='edit'
+                        label='Password'
+                        type='number'
+                        types="password"
+                        className="formcard"
+                        formName="userPassword"
+                        setFormDetails={setFormDetails}
+                        placeholder='Enter 7 digits'
+
+                    />
+
+                    <div className={styles.policy_container}>
+                        <div className={styles.policy_left}>
+                            <input type={'checkbox'} value={true} />
+                        </div>
+
+                        <div className={styles.policy_right}>
+                            <p>
+                                I certify that I am 18 years of age or older, I agree to the User Agreement, and I have read the Privacy Policy.
+                            </p>
+
+                        </div>
+
+
+
+
+                    </div>
+
+
+
+                    <SubmitBtn style={{ opacity: isFormValid ? 1 : 0.5 }} text="Signup" />
+
+                    {/*<div className={styles.piracyContainer} >
+                        <p onClick={() => navigateHandler('/login')}>Login instead</p>
+                        <p onClick={() => navigateHandler('/policy')}>Privacy Policy</p>
+                        </div>*/}
+                </form >
+
             </div>
 
+            <div className={styles.right_section}>
+                <div className={styles.right_container}>
+                    <div className={styles.rightinfo_section}>
+                        <div className={styles.rightinfo_left}>
+                            <h2 className={styles.heading}>Do more with crypto, only on Coincap</h2>
+                            <p>Set up your account and verify your photo ID to get started on trading crypto.</p>
 
-        </form >
-        <Footer />
+                        </div>
+
+                        <div className={styles.rightinfo_right}>
+                            <img src='../../signup.png' />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
 
     </>
 

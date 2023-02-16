@@ -123,6 +123,7 @@ const FormInput = React.memo((props) => {
                 onChange={changeText}
                 value = {props.value}
                 placeholder = {props.placeholder}
+                
             />
         </div>
         {error ? <p className={styles.error}>{error}</p> : ""}

@@ -1,53 +1,99 @@
+ .form_outercontainer {
+   display: flex;
+   justify-content: center;
+   padding-top: 100px
+ }
 
-  .form_container{ 
-    padding-top: 100px; 
-    padding-bottom:100px;
-    width:380px;
-    margin:0px auto 80px auto;
-  }
-  
-  .form_container h1{
-    font-size:2rem;
-    font-weight:900;
-    font-family:poppins
-  }
-  
-  .piracyContainer{
-    display:flex;
-    justify-content: space-between;
-    padding-top:20px
-  
-  }
-  .piracyContainer p{
-    color:var(--color-blue);
-    font-family:poppins;
-    font-size: 15px;
-  }
+ .form_container {
+   width: 400px;
+   padding: 30px;
+   border: 1px solid rgb(225, 225, 225);
+   border-radius: 20px;
 
-  @media screen and (max-width: 900px) {
-    .form_container h1{
-      font-weight:900;
-      font-family:poppins
-    }
-    .form_container{ 
-      width:70%;
-    }
-    
+ }
+
+ .form_container h1 {
+   font-size: 2rem;
+   font-weight: 900;
+   font-family: poppins;
+   margin-bottom: 40px;
+   color: var(--color-blue)
+ }
+
+ .form_container h2 {
+   font-size: 2rem;
+   font-weight: 900;
+   font-family: poppins;
+   margin-bottom: 10px;
+ }
+ .form_container span{
+  font-size: 3rem;
+  display:none
+ }
+
+ .form_container p {
+   font-size: .9rem;
+   color: var(--fadeText);
+ }
+
+
+ .piracyContainer {
+   display: flex;
+   justify-content: center;
+   padding-top: 20px
+ }
+
+ .piracyContainer p {
+   color: var(--color-blue);
+   font-family: poppins;
+   font-size: 15px;
+ }
+
+ @media screen and (max-width: 1024px) {
+   .form_container h1 {
+     font-weight: 900;
+     font-family: poppins
+   }
+
+
+ }
+
+
+ @media screen and (max-width: 900px) {
+   .form_container h1 {
+     font-weight: 900;
+     font-family: poppins
+   }
+
+
+ }
+
+
+
+ @media screen and (max-width: 520px) {
+  .form_outercontainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 0px
   }
-  
-  
-  
-  @media screen and (max-width: 620px) {
-    .form_container h1{
-      font-weight:900;
-      font-family:poppins
-    }
-    .form_container{ 
-      padding-top: 100px; 
-      padding-bottom:100px;
-      width:90%;
-    }
-    
+  .form_container {
+    width: 100%;
+    padding: 30px;
+    border: none;
+    border-radius: 20px;
+    padding-top: 10px;
+ 
   }
-  
-  
+   .form_container h1 {
+     font-weight: 900;
+     font-family: poppins;
+     display:none
+   }
+   .form_container span{
+    font-size: 2rem;
+    display:block;
+    margin-bottom: 30px;
+   }
+
+
+ }

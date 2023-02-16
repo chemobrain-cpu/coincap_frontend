@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import styles from  './login.module.css';
+import styles from './login.module.css';
 //import nav bar
 import NavBar from "../../component/UserNav"
 import Footer from "../../component/Footer"
@@ -45,7 +45,7 @@ function LoginScreen() {
       let formValue = e.value
       setUserPassword(formValue)
       setIsPasswordError(e.error)
-      
+
     }
   }, [])
 
@@ -80,19 +80,25 @@ function LoginScreen() {
 
 
 
-  
 
 
 
 
-  return (<div>
+
+  return (<>
     {isError && <Modal showModal={isError} closeModal={closeModal} content={isErrorInfo} />}
     {isLoading && <LoadingModal />}
 
-      <NavBar current="Signup" />
-
+    <div className={styles.form_outercontainer}>
       <form className={styles.form_container} onSubmit={submitHandler}>
-        <h1>Sign in to coincap</h1>
+        <h1>Coincap</h1>
+
+        <span className='material-icons'>arrow_backward</span>
+
+        <h2>Sign in to coincap</h2>
+
+        <p>Not your device? Use a private or incognito window to sign in.</p>
+
         <FormInput
           icon='edit'
           label='Email'
@@ -100,33 +106,24 @@ function LoginScreen() {
           className="formcard"
           setFormDetails={setFormDetails}
           formName="userEmail"
+          placeholder='Your email address'
         />
-        <FormInput
-          icon='edit'
-          label='Password'
-          type='number'
-          types="password"
-          maxlength={4}
-          className="formcard"
-          formName="userPassword"
-          setFormDetails={setFormDetails}
-        />
+       
 
-        <SubmitBtn style={{ opacity: isFormValid ? 1 : 0.5 }} text='Login' />
+        <SubmitBtn style={{ opacity: isFormValid ? 1 : 0.5 }} text='Continue' />
 
         <div className={styles.piracyContainer} >
-          <p onClick={() => navigateHandler('/forgetPassword')}>Forget password</p>
+         
           <p onClick={() => navigateHandler('/policy')}>Privacy Policy</p>
         </div>
 
       </form >
 
-      
-
-    <Footer />
-    
-    
     </div>
+
+
+
+  </>
 
   );
 }

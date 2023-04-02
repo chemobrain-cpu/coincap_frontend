@@ -1,0 +1,358 @@
+/* styling the homesccreen*/
+.homeScreen {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    overflow-y: scroll;
+    border-bottom: none;
+    height: 80vh;
+}
+
+.homeScreen .timeline {
+    width: 80%;
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 30px;
+    background-color: var(--color-background);
+    padding: 24px;
+    position: relative;
+}
+
+
+.homeScreen .rightBar {
+    width: 20%;
+    overflow-y: scroll;
+    overflow-x: scroll;
+
+}
+
+
+/* styling the asset screen*/
+.assetScreen {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    border-bottom: none;
+    height: 85vh;
+    background-color: var(--color-light-fade);
+    overflow-y: scroll;
+}
+
+.assetScreen .timeline {
+    width: 65%;
+    padding: 24px;
+    overflow-y: scroll;
+}
+
+
+
+.assetScreen .rightBars {
+    width: 35%;
+    border: 1px solid var(--color-fade);
+    padding: 24px;
+
+}
+
+
+/*  */
+.assetScreen .rightBars {
+    overflow-y: scroll;
+}
+
+
+
+
+.assetScreen .rightBars {
+    width: 35%;
+    border: 1px solid var(--color-fade);
+    padding: 24px;
+
+}
+
+.assetScreen .reoccuringMobile {
+    display: none;
+
+}
+
+/* styling the tradesccreen*/
+.tradeScreen {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    overflow-y: scroll;
+    border-bottom: none;
+    height: 80vh;
+    background-color: var(--color-light-fade);
+    overflow-x: scroll;
+    width: 100%
+}
+
+.tradeScreen .timeline {
+    width: 80vw;
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 30px;
+    padding: 10px;
+    overflow-x: scroll;
+}
+
+.tradeScreen .rightBar {
+    width: 20vw;
+    overflow-x: scroll;
+    padding: 10px;
+    padding-bottom: 100px;
+}
+
+/* styling the pay section */
+
+
+/* styling the tradesccreen*/
+.payScreen {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    overflow-y: scroll;
+    border-bottom: none;
+    height: 80vh;
+    background-color: var(--color-light-fade);
+    overflow-x: scroll;
+    width: 100%
+}
+
+.payScreen .pay {
+    width: 60vw;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 10px;
+    overflow-x: scroll;
+}
+
+/*styling the right bar section*/
+.payScreen .rightBar {
+    width: 40vw;
+    overflow-x: scroll;
+    padding: 10px;
+    padding-bottom: 100px;
+}
+
+/*  styling chart screen*/
+.chartScreen {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    overflow-y: scroll;
+    border-bottom: none;
+    height: 80vh;
+    background-color: var(--color-light-fade);
+    overflow-x: scroll;
+    width: 100%
+}
+
+.chartScreen .timeline {
+    width: 60vw;
+    overflow-y: scroll;
+    padding-bottom: 30px;
+    padding: 5px;
+    overflow-x: scroll;
+}
+
+.chartScreen .timeline .coinChartCon {
+    width: 100%;
+    height: 300px;
+    background-color: var(--color-background);
+    
+}
+
+.chartScreen .rightBar {
+    width: 40vw;
+    overflow-x: scroll;
+    padding: 10px;
+    padding-bottom: 100px;
+}
+
+
+
+
+
+
+@media screen and (max-width: 1300px) {
+    .homeScreen .rightBar {
+        display: none;
+
+    }
+
+    .homeScreen .timeline {
+        width: 100%;
+        height: 100%;
+    }
+
+
+    /* styling the asset screen*/
+
+    .assetScreen .timeline {
+        width: 80%;
+        padding: 10px;
+    }
+
+
+
+    .assetScreen .rightBars {
+        display: none;
+
+    }
+
+
+
+
+
+
+
+    .assetScreen .rightBars {
+        width: 35%;
+        border: 1px solid var(--color-fade);
+        padding: 24px;
+
+    }
+
+    .assetScreen .reoccuringMobile {
+        display: none;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+@media screen and (max-width: 900px) {
+
+
+
+    .homeScreen {
+        display: flex;
+    }
+
+    .homeScreen .timeline {
+        width: 100%;
+        padding: 15px;
+
+    }
+
+    .rightBar {
+        display: none
+    }
+
+    /* styling the asset screen */
+    .assetScreen {
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        height: 100%;
+    }
+
+    .assetScreen .timeline {
+        padding-top: 18px;
+        padding-right: 18px;
+        padding-left: 18px;
+        width: 100%;
+        padding-bottom: 200px;
+    }
+
+    /*styling tradescreen*/
+
+    .tradeScreen {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        overflow-y: scroll;
+        border-bottom: none;
+        height: 80vh;
+        background-color: var(--color-light-fade);
+    }
+
+    .tradeScreen .timeline {
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        padding-bottom: 30px;
+        padding: 24px;
+    }
+
+    /* styling the pay section */
+
+    .payScreen .pay {
+        width: 100vw;
+        height: 100%;
+        overflow-y: scroll;
+        padding-top: 0px;
+        overflow-x: scroll;
+    }
+
+}
+
+
+
+@media screen and (max-width: 750px) {
+
+
+    /* styling the asset screen section*/
+    .assetScreen .reoccuringMobile {
+        display: block;
+
+    }
+
+    .assetScreen .reoccuringDesktop {
+        display: none;
+
+    }
+
+    .tradeScreen .timeline {
+        padding: 0px;
+    }
+
+    /* styling the pay section */
+    .payScreen .pay {
+        padding: 0px;
+    }
+
+    /*  styling chart screen*/
+    .chartScreen {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chartScreen .timeline {
+        width: 100vw;
+        height: 100%;
+        overflow-y: scroll;
+        padding-bottom: 30px;
+        padding: 10px;
+        overflow-x: scroll;
+    }
+
+
+
+    .chartScreen .rightBar {
+        width: 100vw;
+        overflow-x: scroll;
+        padding: 10px;
+        padding-bottom: 100px;
+    }
+
+
+}
+
+
+
+@media screen and (max-width: 520px) {}

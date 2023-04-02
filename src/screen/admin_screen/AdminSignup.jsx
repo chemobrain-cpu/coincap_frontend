@@ -4,13 +4,14 @@ import styles from './login.module.css';
 import LoadingModal from "../../component/Modal/LoadingModal"
 import Modal from "../../component/Modal/Modal"
 //import nav bar
-import NavBar from "../../component/AdminNav"
-import Footer from "../../component/Footer"
-import FormInput from "../../component/input-card/input"
-import SubmitBtn from "../../component/Submit";
+import NavBar from "../../component/admin/AdminNav"
+import Footer from "../../component/common/Footer"
+import SubmitBtn from '../../component/common/Submit';
 import { adminsignup } from "../../store/action/userAppStorage";
 import { useDispatch } from "react-redux";
 import {useNavigate} from 'react-router-dom'
+import FormInput from '../../component/common/input-card/input'
+
 
 function SignupScreen() {
   let [userEmail, setUserEmail] = useState("")

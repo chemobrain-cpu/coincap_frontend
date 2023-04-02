@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Volatility.module.css'
 //import nav bar
-import NavBar from "../../component/UserNav"
-import Footer from "../../component/Footer"
-import BulletList from "../../component/bulletListItem"
+import NavBar from "../../component/common/UserNav"
+import Footer from "../../component/common/Footer"
+import BulletList from "../../component/general/bulletListItem"
 import { useNavigate } from 'react-router-dom'
 //let { admin} = useSelector(state => state.userAuth)
 

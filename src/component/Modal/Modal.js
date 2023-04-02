@@ -1,15 +1,15 @@
 import React from 'react'
-import './Modal.css'
+import styles from './Modal.module.css'
 
 let Modal = ({content,closeModal}) => {
-    return <div className='modal_screen'>
-        <div className='modal_center'>
-            <div className='modal_input_card'>
-                <div className='modal_heading_con'>
-                    <p className='modal_heading'>
+    return <div className={styles.modal_screen}>
+        <div className={styles.modal_center}>
+            <div className={styles.modal_input_card}>
+                <div className={styles.modal_heading_con}>
+                    <p className={styles.modal_heading}>
                         {content}
                     </p>
-                    <button className='modal_button' onClick={closeModal}>
+                    <button className={styles.modal_button} onClick={closeModal}>
                     got it!
                 </button>
 

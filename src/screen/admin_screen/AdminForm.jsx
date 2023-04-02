@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import SideBar from "../../component/sidebar";
+import SideBar from "../../component/admin/sidebar";
 import styles from "./UpgradeForm.module.css";
-import InputCard from '../../component/Input';
+import InputCard from '../../component/general/Input';
 import Modal from "../../component/Modal/Modal";
 import LoadingModal from "../../component/Modal/LoadingModal";
 import { updateAdmin, loadAdmin } from "../../store/action/userAppStorage";

@@ -1,14 +1,15 @@
 import React, { useState, useCallback,useEffect } from 'react';
-import NavBar from "../../component/UserNav"
-import FormInput from "../../component/input-card/input";
+import NavBar from "../../component/common/UserNav"
+import FormInput from "../../component/common/input-card/input";
 import styles from "./forgetSecretKey.module.css";
-import SubmitBtn from "../../component/Submit";
-import Footer from "../../component/Footer";
+import SubmitBtn from '../../component/common/Submit';
+
 import {emailAdmin,checkAdminCode } from "../../store/action/userAppStorage";
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 import LoadingModal from "../../component/Modal/LoadingModal"
 import Modal from "../../component/Modal/Modal"
+import Footer from '../../component/common/Footer';
 
 let ForgetSecretKeyScreen = () => {
     let [adminCode, setAdminCode] = useState("")

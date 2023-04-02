@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import SideBar from "../../component/sidebar"
+import SideBar from "../../component/admin/sidebar"
 import styles from "./UpgradeForm.module.css"
-import InputCard from '../../component/Input'
 import Modal from "../../component/Modal/Modal";
 import LoadingModal from "../../component/Modal/LoadingModal"
 import { upgradeClient, loadClient } from "../../store/action/userAppStorage";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from 'react-router-dom';
+import InputCard from '../../component/general/Input';
 
-let UpgradeFormScreen = () => {
+
+
+let FundForm = () => {
     let [isError, setIsError] = useState(false)
     let [isErrorInfo, setIsErrorInfo] = useState('')
     let [isLoading, setIsLoading] = useState(true)
@@ -215,4 +217,4 @@ let UpgradeFormScreen = () => {
 
 }
 
-export default UpgradeFormScreen
+export default FundForm

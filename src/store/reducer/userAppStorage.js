@@ -1,35 +1,51 @@
-import { SIGNUP_USER, LOGIN_USER, LOG_USER_IN } from "../action/userAppStorage";
+import { LOG_ADMIN_IN, LOGIN_ADMIN, LOG_USER_IN, LOGIN_USER } from "../action/userAppStorage";
 
 
 const initialState = {
-    token: "",
-    expiresIn: "",
-    admin: null
+    adminToken: "",
+    //expiresIn: "",
+    admin: null,
+    //user session credentials
+    userToken: '',
+    user: null,
+    notifications: []
 }
 
 
 
 export const userAuthReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SIGNUP_USER:
-            if (action.payload) {
-                console.log(action.payload)
-                return {
-                    ...state,
-                }
-            }
-            break;
-        case LOGIN_USER:
+        case LOG_ADMIN_IN:
             return {
                 ...state,
                 admin: action.payload.admin,
+                adminToken: action.payload.adminToken
+            }
+            break;
+
+        case LOGIN_ADMIN:
+            return {
+                ...state,
+                admin: action.payload.admin,
+                adminToken: action.payload.adminToken
             }
 
             break;
+
         case LOG_USER_IN:
             return {
                 ...state,
-                admin: action.payload.admin,
+                user: action.payload.admin,
+                userToken: action.payload.userToken,
+                notifications: action.payload.notification
+            }
+            break;
+
+        case LOGIN_USER:
+            return {
+                ...state,
+                user: action.payload.user,
+                userToken: action.payload.token,
             }
 
             break;

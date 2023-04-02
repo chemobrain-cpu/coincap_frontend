@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Support.module.css'
 //import nav bar
-import NavBar from "../../component/UserNav"
-import Footer from "../../component/Footer"
+import NavBar from "../../component/common/UserNav"
+import Footer from "../../component/common/Footer"
 
 
 //let { admin} = useSelector(state => state.userAuth)

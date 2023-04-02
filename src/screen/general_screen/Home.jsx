@@ -1,36 +1,30 @@
 import React, { useState} from 'react';
 //import nav bar
-import NavBar from "../../component/UserNav"
-import GetStarted from "../../component/getStarted"
-import CoinSection from "../../component/coinSection"
-import EarnSection from "../../component/earnSection"
-import EarningSection from "../../component/earningSection"
-import Patner from "../../component/patner"
-import PortfolioSection from "../../component/portfolio"
-import SecuritySection from "../../component/Security"
-import InfoSection from "../../component/Info"
-import Action from "../../component/action"
-import Footer from "../../component/Footer"
-import Modal from "../../component/Modal/DownloadModal"
+import NavBar from "../../component/common/UserNav"
+import GetStarted from "../../component/general/getStarted"
+import CoinSection from "../../component/general/coinSection"
+
+import EarningSection from "../../component/general/earningSection"
+import Patner from "../../component/general/patner"
+import PortfolioSection from "../../component/general/portfolio"
+import SecuritySection from "../../component/general/Security"
+import InfoSection from "../../component/general/Info"
+import Action from "../../component/general/action"
+
+import Footer from "../../component/common/Footer"
+import EarnSection from '../../component/general/earnSection';
 
 
 
 function Home() {
   
-    let [showModal, setShowModal] = useState(false)
-    const closeModal = () => {
-        setShowModal(false)
-    }
-
-    const navigateToApp = ()=>{
-        setShowModal(true)
-
+    let navigateToApp = ()=>{
+        //alert('navigating')
     }
 
     
 
     return (<>
-        {showModal && <Modal showModal={showModal} closeModal={closeModal} content={"continue on the mobile app"} />}
         <NavBar navigateToApp ={navigateToApp}/>
 
         <GetStarted navigateToApp ={navigateToApp}/>

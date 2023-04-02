@@ -54,6 +54,9 @@ export const validatePhoneNumber = (data)=>{
     return error
 }
 
+
+
+
 export const validatePassword = (data)=>{
     
     let error = ""
@@ -75,5 +78,21 @@ export const validatePassword = (data)=>{
         return error
     }
     
+}
+
+export const addTrailingSpaces = (stringToFormat)=>{
+    let newString = stringToFormat.split('')
+    let str = []
+    for(let i =0;i< newString.length;i++){
+        if(i == 3 || i === 7 || i == 11){
+            str.push(newString[i])
+            str.push(" ")
+        }else{
+            str.push(newString[i])
+        }
+    }
+    return str.join("")
+
+
 }
 

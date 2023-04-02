@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styles from './Bitcoin.module.css'
 //import nav bar
-import NavBar from "../../component/UserNav"
-import LearnCard from "../../component/learnCard"
-import Footer from "../../component/Footer"
-import BulletList from "../../component/bulletListItem"
+import NavBar from "../../component/common/UserNav"
+import LearnCard from "../../component/general/learnCard"
+import Footer from "../../component/common/Footer"
+import BulletList from "../../component/general/bulletListItem"
 import {useNavigate } from 'react-router-dom'
 
 function Cefi() {
@@ -103,7 +103,8 @@ function Cefi() {
                 </div>
                 <BulletList
                     text="Each CeFi product and provider is unique and may put your deposited crypto to work in ways that have higher or lower levels of risk. It’s important to do your homework and understand how your crypto is being used, how the yield you’re earning is generated, and what risks are entailed."
-                />
+                />import LearnCard from './../../component/general/learnCard';
+
                 <BulletList
                     text="Remember: crypto deposits aren’t currently eligible for the government-backed insurance that protects savings held by a traditional bank. (That said, Coincap’s CeFi lending product offers a principal guarantee.)"
                 />

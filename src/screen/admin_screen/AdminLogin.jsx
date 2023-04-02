@@ -1,10 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import styles from  './login.module.css';
 //import nav bar
-import NavBar from "../../component/AdminNav"
-import Footer from "../../component/Footer"
-import FormInput from "../../component/input-card/input"
-import SubmitBtn from "../../component/Submit";
+import NavBar from "../../component/admin/AdminNav"
+import Footer from "../../component/common/Footer"
+import SubmitBtn from '../../component/common/Submit';
 import { adminlogin } from "../../store/action/userAppStorage";
 import { useDispatch} from "react-redux";
 //importing modals
@@ -12,6 +11,7 @@ import LoadingModal from "../../component/Modal/LoadingModal"
 import Modal from "../../component/Modal/Modal"
 //import routers
 import {useNavigate} from 'react-router-dom'
+import FormInput from '../../component/common/input-card/input';
 
 //let { admin} = useSelector(state => state.userAuth)
 function LoginScreen() {
@@ -52,7 +52,6 @@ function LoginScreen() {
     let data = {
       userEmail,userPassword
     }
-    console.log(data)
 
     let response = await dispatch(adminlogin({userEmail,userPassword}))
 

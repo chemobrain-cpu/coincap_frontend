@@ -1,0 +1,83 @@
+.news {
+    padding: 30px;
+    border-bottom: 1px solid var(--color-fade);
+    width:400px
+}
+
+.news .iconCon {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.news .iconCon .arrowCon {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.news .iconCon span {
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.news .iconCon span:hover {
+
+    background-color: var(--color-fade);
+    transition: 1s ease;
+
+}
+
+.news .iconCon .cancelCon {
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+
+.news .infoCon {
+    display: flex;
+    padding: 10px
+}
+
+.news .infoTextCon {
+    width: 60%
+}
+
+.news .infoImgCon {
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.news .infoImgCon img {
+    width: 80%
+}
+
+.news .infoCon .head {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.news .infoCon .text {
+    font-size: 1rem;
+    color: var(--fadeText);
+    margin-bottom: 10px;
+
+}
+
+.news .infoCon .actionText {
+    font-size: 1.1rem;
+    color: var(--color-blue);
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+
+}

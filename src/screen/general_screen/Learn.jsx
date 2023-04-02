@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import styles from './Learn.module.css'
 //import nav bar
-import NavBar from "../../component/UserNav"
-import LearnCard from "../../component/learnCard"
-import Footer from "../../component/Footer"
+import NavBar from "../../component/common/UserNav"
+import LearnCard from "../../component/general/learnCard"
+import Footer from "../../component/common/Footer"
 import { useNavigate } from 'react-router-dom'
 //let { admin} = useSelector(state => state.userAuth)
 

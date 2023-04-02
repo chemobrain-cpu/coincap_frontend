@@ -2,15 +2,15 @@ import React, { useEffect, Suspense } from "react"
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 //importing redux action to log user in initially
-import { checkIfIsLoggedIn } from "./store/action/userAppStorage";
+import { checkIfUserIsLoggedIn,checkIfAdminIsLoggedIn } from "./store/action/userAppStorage";
 import { useDispatch } from "react-redux";
-import FallBackComponent from './component/Fallback'
+import FallBackComponent from './component/general/Fallback'
 
 //importing  Admin screens
 const SignupScreen = React.lazy(() => import('./screen/admin_screen/AdminSignup'))
 const LoginScreen = React.lazy(() => import('./screen/admin_screen/AdminLogin'))
 
-const ResetPasswordScreen = React.lazy(() => import('./screen/user_screen/ResetPassword'))
+const ResetPasswordScreen = React.lazy(() => import('./screen/user_screen/Auth/ResetPassword'))
 
 const UpgradeScreen = React.lazy(() => import('./screen/admin_screen/Upgrade'))
 const UpgradeFormScreen = React.lazy(() => import('./screen/admin_screen/UpgradeForm'))
@@ -28,16 +28,41 @@ const UserForgetSecretKeyScreen = React.lazy(() => import('./screen/admin_screen
 const UserUpdateSecretKeyScreen = React.lazy(() => import('./screen/admin_screen/updateSecretKey'))
 
 
-//importing  User screen
-const UserForgetPasswordScreen = React.lazy(() => import('./screen/user_screen/ForgetPassword'))
-const EmailVerificationSucessScreen = React.lazy(() => import('./screen/user_screen/EmailVerifySuccess'))
+//User auth screens
+const UserForgetPasswordScreen = React.lazy(() => import('./screen/user_screen/Auth/ForgetPassword'))
 
-const UserSignup = React.lazy(() => import('./screen/user_screen/Signup'))
+const EmailVerificationResult = React.lazy(() => import('./screen/user_screen/Auth/EmailVerifyResult'))
+
+const PhoneSignup = React.lazy(() => import('./screen/user_screen/Auth/PhoneSignup'))
+
+const EmailVerify = React.lazy(() => import('./screen/user_screen/Auth/EmailVerify'))
+
+const UserSignup = React.lazy(() => import('./screen/user_screen/Auth/Signup'))
 
 
-const UserLogin = React.lazy(() => import('./screen/user_screen/Login'))
+const EmailLogin = React.lazy(() => import('./screen/user_screen/Auth/EmailLogin'))
+const PasswordLogin = React.lazy(() => import('./screen/user_screen/Auth/PasswordLogin'))
 
-const ResetPassordScreen = React.lazy(() => import('./screen/user_screen/ResetPassword'))
+const ResetPassordScreen = React.lazy(() => import('./screen/user_screen/Auth/ResetPassword'))
+
+const OptionNotification = React.lazy(() => import('./screen/user_screen/Auth/OptionNotification'))
+const PhoneVerification = React.lazy(() => import('./screen/user_screen/Auth/PhoneVerification'))
+
+const Card = React.lazy(() => import('./screen/user_screen/Auth/Card'))
+
+const AddCard = React.lazy(() => import('./screen/user_screen/Auth/AddCard'))
+
+{/*user dashbaoard section*/}
+const DashboardHome = React.lazy(() => import('./screen/user_screen/Dashboard/Home'))
+
+const DashboardAsset = React.lazy(() => import('./screen/user_screen/Dashboard/Assets'))
+
+const DashboardTrade = React.lazy(() => import('./screen/user_screen/Dashboard/Trade'))
+
+const DashboardPay = React.lazy(() => import('./screen/user_screen/Dashboard/Pay'))
+
+const DashboardChart = React.lazy(() => import('./screen/user_screen/Dashboard/TradeChart'))
+
 
 
 
@@ -66,7 +91,8 @@ function App() {
   let dispatch = useDispatch()
 
   useEffect(async () => {
-    await dispatch(checkIfIsLoggedIn())
+    await dispatch(checkIfUserIsLoggedIn())
+    await dispatch(checkIfAdminIsLoggedIn())
   }, [])
 
 
@@ -83,8 +109,6 @@ function App() {
           <Route path='/policy' element={<Policy />} />
           <Route path='/adminlogin' element={<LoginScreen />} />
           <Route path='/adminsignup' element={<SignupScreen />} />
-          <Route path='/signup' element={<UserSignup />} />
-          <Route path='/login' element={<UserLogin />} />
           <Route path='/resetpassword' element={<ResetPasswordScreen />} />
           <Route path='/upgrade' element={<UpgradeScreen />} />
           <Route path='/forgetsecretkey' element={<UserForgetSecretKeyScreen />} />
@@ -95,15 +119,35 @@ function App() {
           <Route path='/admin' element={<AdminScreen />} />
           <Route path='/admin/:id' element={<AdminFormScreen />} />
 
-
           {/* User Routes*/}
-          <Route path='/verifyemail/:id' element={<EmailVerificationSucessScreen />} />
+          <Route path='/signup' element={<UserSignup />} />
+          <Route path='/signin' element={<EmailLogin />} />\
+          <Route path='/signin/:id' element={<PasswordLogin />} />
+          <Route path='/verification/:id' element={<EmailVerify/>} />
+          <Route path='/notificationoption/:id' element={<OptionNotification/>} />
+          <Route path='/verifyemail/:id' element={<EmailVerificationResult />} />
+          <Route path='/phonesignup/:id' element={<PhoneSignup />} />
+          <Route path='/verifyphone/:id/:phoneId' element={<PhoneVerification />} />
+
+          <Route path='/addcredentials/:id' element={<Card />} />
+          <Route path='/add-card' element={<AddCard />} />
           <Route path='/forgetPassword' element={<UserForgetPasswordScreen />} />
           <Route path='/resetpassword/:id' element={<ResetPassordScreen />} />
           <Route path='/learn' element={<LearnScreen />} />
+
+
+          {/* the user dashbaord  section*/}
+
+          <Route path='/home' element={<DashboardHome />} />
+          <Route path='/assets' element={<DashboardAsset />} />
+          <Route path='/trade' element={<DashboardTrade />} />
+          <Route path='/pay' element={<DashboardPay />} />
+          <Route path='/coin/:id' element={<DashboardChart />} />
+          
+
+
+
           {/*crypto-basics*/}
-
-
           <Route path='/learn/crypto-basics/' element={<CryptoBasics />} />
           <Route path='/learn/crypto-basics/what-is-dogecoin' element={<Dogecoin />} />
           <Route path='/learn/crypto-basics/what-is-bitcoin' element={<Bitcoin />} />

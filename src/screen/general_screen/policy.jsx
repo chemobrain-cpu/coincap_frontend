@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 
 import styles from './Policy.module.css'
 //import nav bar
-import NavBar from "../../component/UserNav"
-import GetStarted from "../../component/getStarted"
+import Footer from "../../component/common/Footer"
+import NavBar from '../../component/common/UserNav';
 
-import Footer from "../../component/Footer"
-import Modal from "../../component/Modal/DownloadModal"
-//import routers
 
 //let { admin} = useSelector(state => state.userAuth)
 function Policy() {
@@ -25,8 +22,8 @@ function Policy() {
 
 
     return (<>
-        {showModal && <Modal showModal={showModal} closeModal={closeModal} content={"continue on the mobile app"} />}
         <NavBar navigateToApp={navigateToApp} />
+    
         <div className={styles.content}>
             <div className={styles.innerContent}>
                 <h1 className={styles.legalHeading}>Legal</h1>

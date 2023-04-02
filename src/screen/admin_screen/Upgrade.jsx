@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import SideBar from "../../component/sidebar"
+import SideBar from "../../component/admin/sidebar"
 import styles from './Upgrade.module.css'
 import { loadClients } from "../../store/action/userAppStorage";
 import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import Modal from "../../component/Modal/Modal";
 import LoadingModal from "../../component/Modal/LoadingModal"
-import User from "../../component/dashboardUser";
+import User from "../../component/admin/dashboardUser";
 
 
 let UpgradeScreen = () => {
@@ -67,6 +67,9 @@ let UpgradeScreen = () => {
         navigate(`/upgrade/${id}`)
     }
 
+
+
+
     return <>
         {isError && <Modal showModal={isError} closeModal={closeModal} content={isErrorInfo} />}
 
@@ -77,8 +80,6 @@ let UpgradeScreen = () => {
                 <div className={styles.dashboard_main_header}>
                     <h1>Update Client Info</h1>
                 </div>
-
-
                 {!isLoading && clients.map(data => <User
                     username={`${data.firstName} ${data.lastName}`}
                     email={data.email}

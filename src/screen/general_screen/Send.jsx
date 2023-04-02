@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styles from './Send.module.css'
 //import nav bar
-import NavBar from "../../component/UserNav"
-import BulletList from "../../component/bulletListItem"
-import Footer from "../../component/Footer"
+import NavBar from "../../component/common/UserNav"
+import BulletList from "../../component/general/bulletListItem"
+import Footer from "../../component/common/Footer"
 import {useNavigate } from 'react-router-dom'
 //let { admin} = useSelector(state => state.userAuth)
 

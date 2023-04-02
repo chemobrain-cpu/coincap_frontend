@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import SideBar from "../../component/sidebar"
+import SideBar from "../../component/admin/sidebar"
 import styles from './Admin.module.css'
 import { loadAdmins, deleteAdmin } from "../../store/action/userAppStorage";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import Modal from "../../component/Modal/Modal";
 import LoadingModal from "../../component/Modal/LoadingModal"
-import User from "../../component/dashboardAdmin"
+import User from "../../component/admin/dashboardAdmin"
+
+
 
 let AdminsScreen = () => {
     let [isError, setIsError] = useState(false)

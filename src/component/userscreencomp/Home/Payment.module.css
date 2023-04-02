@@ -1,0 +1,136 @@
+/*styling the paymentcomplete box section*/
+.paymentComplete {
+    border-bottom: 1px solid var(--color-fade);
+    padding: 3px;
+    padding-bottom: 30px;
+    padding-top: 30px
+}
+
+ .paymentComplete .paymentHeading {
+    margin-bottom: 10px;
+}
+
+ .paymentComplete .paymentText {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--fadeText);
+    margin-bottom: 50px;
+
+}
+
+ .paymentComplete .stepContainer {
+    display: flex;
+}
+
+ .paymentComplete .steps {
+    width: 60%
+}
+
+ .paymentComplete .eachstepText {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--fadeText);
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+ .paymentComplete .eachstepText span {
+    padding: 2.3px;
+    border-radius: 100%;
+    background-color: rgb(71, 128, 71);
+    color: var(--color-background);
+    font-size: 1.3rem;
+    margin-right: 15px;
+}
+
+ .paymentComplete .eachstepDiv {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+ .paymentComplete .eachstepDiv .iconCon {
+    margin-right: 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.paymentComplete .eachstepDiv span {
+    font-size: 2rem
+}
+
+
+ .paymentComplete .eachstepDiv .textCon p {
+    font-size: 1.2rem;
+    font-weight: 600;
+
+
+}
+
+ .paymentComplete .eachstepDiv .textCon p:nth-of-type(2) {
+    color: var(--fadeText);
+    margin-bottom: 15px;
+
+
+}
+
+ .paymentComplete .eachstepDiv .textCon p:nth-of-type(3) {
+    color: var(--color-blue);
+    font-weight: 400;
+}
+
+
+
+ .paymentComplete .action {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ .paymentComplete .action button {
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 30px;
+    background-color: var(--color-blue);
+    color: var(--background-color);
+    font-size: 1.2rem;
+    font-family: Poppins;
+    font-weight: 600;
+
+}
+@media screen and (max-width: 1200px) {
+   
+    /* xxxxxxxxxxxxxxx */
+    .paymentComplete .stepContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .paymentComplete .steps {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .paymentComplete .action {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+
+}
+
+@media screen and (max-width: 900px) {
+    .paymentComplete {
+        padding: 0px;
+        padding-bottom: 30px;
+        padding-top: 30px
+    }
+    .paymentComplete .steps {
+        width: 100%
+    }
+
+}
+

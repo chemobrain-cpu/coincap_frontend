@@ -67,7 +67,7 @@ export const checkIfAdminIsLoggedIn = () => {
         return
       }
 
-      response = await fetch(`http://coincap-backend.onrender.com/auth/adminbytoken`, {
+      response = await fetch(`https://coincap-backend.onrender.com/auth/adminbytoken`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +90,7 @@ export const checkIfAdminIsLoggedIn = () => {
 export const adminsignup = (data) => {
   return async (dispatch, getState) => {
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/adminsignup`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/adminsignup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -137,7 +137,7 @@ export const adminlogin = (data) => {
   return async (dispatch, getState) => {
     //do some check on the server if its actually login before proceding to dispatch
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/adminLogin`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/adminLogin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -193,7 +193,7 @@ export const loadClients = () => {
     //do some check on the server if its actually login before proceding to dispatch
     let { adminToken } = getState().userAuth
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/users`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/users`, {
         headers: {
           "Content-Type": "application/json",
           "header": `${adminToken}`
@@ -236,7 +236,7 @@ export const loadClient = (id) => {
     //do some check on the server if its actually login before proceding to dispatch
     let { adminToken } = getState().userAuth
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/user/${id}`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/user/${id}`, {
         headers: {
           "Content-Type": "application/json",
           "header": `${adminToken}`
@@ -280,7 +280,7 @@ export const loadAdmins = () => {
     let { adminToken } = getState().userAuth
 
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/admins`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/admins`, {
 
         headers: {
           "Content-Type": "application/json",
@@ -332,7 +332,7 @@ export const deleteAdmin = (id) => {
     let { adminToken } = getState().userAuth
 
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/deleteadmin/${id}`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/deleteadmin/${id}`, {
 
         headers: {
           "Content-Type": "application/json",
@@ -377,7 +377,7 @@ export const loadAdmin = (id) => {
     let { adminToken } = getState().userAuth
 
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/admin/${id}`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/admin/${id}`, {
         headers: {
           "Content-Type": "application/json",
           "header": `${adminToken}`
@@ -418,7 +418,7 @@ export const updateClient = (data) => {
     //do some check on the server if its actually login before proceding to dispatch
     let { adminToken } = getState().userAuth
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/updateuser`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/updateuser`, {
         method: 'PUT',
         headers: {
           "Content-Type": "application/json",
@@ -462,7 +462,7 @@ export const updateAdmin = (data) => {
     //do some check on the server if its actually login before proceding to dispatch
     let { adminToken } = getState().userAuth
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/updateadmin`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/updateadmin`, {
         method: 'PUT',
         headers: {
           "Content-Type": "application/json",
@@ -506,7 +506,7 @@ export const upgradeClient = (data) => {
     //do some check on the server if its actually login before proceding to dispatch
     let { adminToken } = getState().userAuth
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/upgradeuser`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/upgradeuser`, {
         method: 'PUT',
         headers: {
           "Content-Type": "application/json",
@@ -550,7 +550,7 @@ export const emailClient = (data) => {
   return async (dispatch, getState) => {
     //do some check on the server if its actually login before proceding to dispatch
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/emailuser`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/emailuser`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -594,7 +594,7 @@ export const confirm = (data) => {
   return async (dispatch, getState) => {
     //do some check on the server if its actually login before proceding to dispatch
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/verifyemail/${data}`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/verifyemail/${data}`, {
         headers: {
           "Content-Type": "application/json",
         }
@@ -636,7 +636,7 @@ export const isEmailExist = (data) => {
   return async (dispatch, getState) => {
     //do some check on the server if its actually login before proceding to dispatch
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/isemailexist`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/isemailexist`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -680,7 +680,7 @@ export const checkAdminCode = (code) => {
   return async (dispatch, getState) => {
     //do some check on the server if its actually login before proceding to dispatch
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/checkadmincode/${code}`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/checkadmincode/${code}`, {
         headers: {
           "Content-Type": "application/json",
         }
@@ -722,7 +722,7 @@ export const emailAdmin = (data) => {
   return async (dispatch, getState) => {
     //do some check on the server if its actually login before proceding to dispatch
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/emailadmin`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/emailadmin`, {
         headers: {
           "Content-Type": "application/json",
         }
@@ -764,7 +764,7 @@ export const changeSecretKey = (data) => {
   return async (dispatch, getState) => {
     //do some check on the server if its actually login before proceding to dispatch
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/changesecretkey`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/changesecretkey`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -808,7 +808,7 @@ export const resetPassword = (data) => {
   return async (dispatch, getState) => {
     //do some check on the server if its actually login before proceding to dispatch
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/resetpassword/${data.id}`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/resetpassword/${data.id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -902,7 +902,7 @@ export const checkIfUserIsLoggedIn = () => {
         return
       }
 
-      response = await fetch(`http://coincap-backend.onrender.com/auth/userbytoken`, {
+      response = await fetch(`https://coincap-backend.onrender.com/auth/userbytoken`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -927,7 +927,7 @@ export const checkEmail = (data) => {
   return async (dispatch, getState) => {
     //do some check on the server if its actually login before proceding to dispatch
     try {
-      const response = await fetch(`http://coincap-backend.onrender.com/auth/checkemail/${data}`, {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/checkemail/${data}`, {
         headers: {
           "Content-Type": "application/json",
         }
@@ -969,7 +969,7 @@ export const checkEmail = (data) => {
 export const loginUser = (dataObj) => {
   return async (dispatch, getState) => {
     try {
-      let response = await fetch('http://coincap-backend.onrender.com/auth/login', {
+      let response = await fetch('https://coincap-backend.onrender.com/auth/login', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1056,7 +1056,7 @@ export const loginUser = (dataObj) => {
 export const signupUser = (data) => {
   return async (dispatch, getState) => {
     try {
-      let response = await fetch('http://coincap-backend.onrender.com/auth/emailsignup', {
+      let response = await fetch('https://coincap-backend.onrender.com/auth/emailsignup', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1104,7 +1104,7 @@ export const signupUser = (data) => {
 export const verifiedEmail = (data) => {
   return async (dispatch, getState) => {
     try {
-      let response = await fetch('http://coincap-backend.onrender.com/auth/confirmuserverification', {
+      let response = await fetch('https://coincap-backend.onrender.com/auth/confirmuserverification', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1145,7 +1145,7 @@ export const verifiedEmail = (data) => {
 export const cancelRegisteration = (data) => {
   return async (dispatch, getState) => {
     try {
-      let response = await fetch('http://coincap-backend.onrender.com/auth/cancelregisteration', {
+      let response = await fetch('https://coincap-backend.onrender.com/auth/cancelregisteration', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1186,7 +1186,7 @@ export const cancelRegisteration = (data) => {
 export const phoneSignup = (data) => {
   return async (dispatch, getState) => {
     try {
-      let response = await fetch('http://coincap-backend.onrender.com/auth/phone', {
+      let response = await fetch('https://coincap-backend.onrender.com/auth/phone', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1227,7 +1227,7 @@ export const phoneSignup = (data) => {
 export const phoneVerification = (data) => {
   return async (dispatch, getState) => {
     try {
-      let response = await fetch('http://coincap-backend.onrender.com/auth/confirmphone', {
+      let response = await fetch('https://coincap-backend.onrender.com/auth/confirmphone', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1281,7 +1281,7 @@ export const addPaymentMethod = (data) => {
     let { userToken } = getState().userAuth
     try {
 
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/paymentmethod`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/paymentmethod`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1334,7 +1334,7 @@ export const loadCoins = (pageNumber, no) => {
   return async (dispatch, getState) => {
     //do some check on the server if its actually login before proceding to dispatch
     try {
-      let response = await fetch(`http://coincap-backend.onrender.com/coins/${no}/${pageNumber}`)
+      let response = await fetch(`https://coincap-backend.onrender.com/coins/${no}/${pageNumber}`)
 
       if (response.status === 404) {
         let data = await response.json()
@@ -1392,7 +1392,7 @@ export const getDetailedCoinData = (coinId) => {
   return async (dispatch, getState) => {
     //do some check on the server if its actually login before proceding to dispatch
     try {
-      let response = await fetch(`http://coincap-backend.onrender.com/coin/${coinId}`)
+      let response = await fetch(`https://coincap-backend.onrender.com/coin/${coinId}`)
 
       if (response.status === 404) {
         let data = await response.json()
@@ -1447,7 +1447,7 @@ export const getCoinMarketChart = (coinId, selectedRange) => {
   return async (dispatch, getState) => {
     //do some check on the server if its actually login before proceding to dispatch
     try {
-      let response = await fetch(`http://coincap-backend.onrender.com/coinmarketchart/${coinId}/${selectedRange}`)
+      let response = await fetch(`https://coincap-backend.onrender.com/coinmarketchart/${coinId}/${selectedRange}`)
 
       if (response.status === 404) {
         let data = await response.json()
@@ -1500,7 +1500,7 @@ export const getCoin = (coinId) => {
   return async (dispatch, getState) => {
     //do some check on the server if its actually login before proceding to dispatch
     try {
-      let response = await fetch(`http://coincap-backend.onrender.com/singlecoin/${coinId}`)
+      let response = await fetch(`https://coincap-backend.onrender.com/singlecoin/${coinId}`)
 
       if (response.status === 404) {
         let data = await response.json()
@@ -1556,7 +1556,7 @@ export const addToWatchList = (data) => {
     let { userToken } = getState().userAuth
 
     try {
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/modifywatchlist`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/modifywatchlist`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -1610,7 +1610,7 @@ export const loadWatchList = (ids) => {
   return async (dispatch, getState) => {
     //do some check on the server if its actually login before proceding to dispatch
     try {
-      let response = await fetch(`http://coincap-backend.onrender.com/coinlist/${ids}`)
+      let response = await fetch(`https://coincap-backend.onrender.com/coinlist/${ids}`)
 
       if (response.status === 404) {
         let data = await response.json()
@@ -1660,7 +1660,7 @@ export const uploadFrontId = (data) => {
       //do some check on the server if its actually login before proceding to dispatch
       let { userToken } = getState().userAuth
 
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/addfrontid`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/addfrontid`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -1720,7 +1720,7 @@ export const uploadBackId = (data) => {
 
       let { userToken } = getState().userAuth
 
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/addbackid`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/addbackid`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -1782,7 +1782,7 @@ export const changeWalletAsset = (data) => {
     let { userToken } = getState().userAuth
 
     try {
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/changewalletaddress`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/changewalletaddress`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -1839,7 +1839,7 @@ export const getNotifications = () => {
 
     try {
 
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/notifications`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/notifications`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -1900,7 +1900,7 @@ export const updateCredentials = (data) => {
     let { userToken } = getState().userAuth
 
     try {
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/credentials`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/credentials`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -1954,7 +1954,7 @@ export const closeMyAccount = () => {
   return async (dispatch, getState) => {
     let { userToken } = getState().userAuth
     try {
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/closemyaccount`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/closemyaccount`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -2010,7 +2010,7 @@ export const secureAccount = (data) => {
     let { userToken } = getState().userAuth
 
     try {
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/secureaccount`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/secureaccount`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -2069,7 +2069,7 @@ export const offPinSwitch = () => {
     let { userToken } = getState().userAuth
 
     try {
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/offpinswitch`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/offpinswitch`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -2127,7 +2127,7 @@ export const onPinSwitch = () => {
     let { userToken } = getState().userAuth
 
     try {
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/onpinswitch`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/onpinswitch`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -2198,7 +2198,7 @@ export const getTransactions = () => {
   return async (dispatch, getState) => {
     let { userToken } = getState().userAuth
     try {
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/transactions`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/transactions`, {
         headers: {
           "Content-Type": "application/json",
           "header": `${userToken}`
@@ -2252,7 +2252,7 @@ export const sellCrypto = (data) => {
       //do some check on the server if its actually login before proceding to dispatch
       let { userToken } = getState().userAuth
 
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/sellasset`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/sellasset`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2309,7 +2309,7 @@ export const buyCrypto = (data) => {
       //do some check on the server if its actually login before proceding to dispatch
       let { userToken } = getState().userAuth
 
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/buyasset`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/buyasset`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2368,7 +2368,7 @@ export const convertCrypto = (data) => {
       //do some check on the server if its actually login before proceding to dispatch
       let { userToken } = getState().userAuth
 
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/convertasset`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/convertasset`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2427,7 +2427,7 @@ export const sendCryptoToBank = (data) => {
       //do some check on the server if its actually login before proceding to dispatch
       let { userToken } = getState().userAuth
 
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/sendassettobank`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/sendassettobank`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2503,7 +2503,7 @@ export const sendCryptoToWallet = (data) => {
       //do some check on the server if its actually login before proceding to dispatch
       let { userToken } = getState().userAuth
 
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/sendassettowallet`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/sendassettowallet`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2579,7 +2579,7 @@ export const sendTaxCode = (data) => {
       //do some check on the server if its actually login before proceding to dispatch
       let { userToken } = getState().userAuth
 
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/updatetaxcode`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/updatetaxcode`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2638,7 +2638,7 @@ export const sendUstCode = (data) => {
       //do some check on the server if its actually login before proceding to dispatch
       let { userToken } = getState().userAuth
 
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/updateustcode`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/updateustcode`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2698,7 +2698,7 @@ export const sendKtcCode = (data) => {
       //do some check on the server if its actually login before proceding to dispatch
       let { userToken } = getState().userAuth
 
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/updatektccode`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/updatektccode`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2757,7 +2757,7 @@ export const sendTntCode = (data) => {
       //do some check on the server if its actually login before proceding to dispatch
       let { userToken } = getState().userAuth
 
-      let response = await fetch(`http://coincap-backend.onrender.com/auth/updatetntcode`, {
+      let response = await fetch(`https://coincap-backend.onrender.com/auth/updatetntcode`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

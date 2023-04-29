@@ -10,6 +10,7 @@ import TransferModal from '../../../component/Modal/transferModal';
 import TradeModal from './../../../component/Modal/tradeModal';
 import { TopUpAccount } from './../../../component/userscreencomp/Top-up/TopUp';
 import SettingSidebar from './../../../component/userscreencomp/settingSideBar';
+import { useSelector } from "react-redux";
 
 
 
@@ -17,6 +18,7 @@ const TopUpForm = () => {
   //tradeModal and transfer modal
   let [isOpenTradeModal, setIsOpenTradeModal] = useState(false)
   let [isOpenTransferModal, setIsOpenTransferModal] = useState(false)
+  let { color } = useSelector(state => state.userAuth)
 
 
   let { action } = useParams()
@@ -58,7 +60,7 @@ const TopUpForm = () => {
           <SettingSidebar status='' />
         </div>
 
-        <div className={styles.main} >
+        <div className={styles.main} style={{backgroundColor:color.background}}>
           <BackHeader openTradeModal={openTradeModal} openTransferModal={openTransferModal} title={`Top up`} />
           {/*actual home screen */}
 

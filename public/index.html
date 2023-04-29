@@ -46,8 +46,87 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script src="//code.tidio.co/lhx4gloozqqvlfpluolav2pkb1zkuvel.js" async></script>
-    
- </body>
+
+  <script async src="//code.tidio.co/lhx4gloozqqvlfpluolav2pkb1zkuvel.js"></script>
+
+  <script>
+
+    (function () {
+
+
+
+
+      // modify whitelisted urls here
+
+      var whitelistedUrls = [
+
+        'https://coincaps.cloud/support',
+
+      ];
+
+      // do not modify script after this line
+
+
+
+
+
+
+
+      var shouldShowWidget = (function isCurrentUrlWhitelisted() {
+
+        var currentUrl = window.location.href;
+
+        var isWhitelisted = false;
+
+        whitelistedUrls.forEach(url => {
+
+          if (currentUrl.indexOf(url) > -1) {
+
+            isWhitelisted = true;
+
+          }
+
+        })
+
+        return isWhitelisted;
+
+      })();
+
+
+
+
+      function onTidioChatApiReady() {
+
+        if (shouldShowWidget) {
+
+          window.tidioChatApi.show();
+
+        }
+
+        else {
+
+          window.tidioChatApi.hide();
+
+        }
+
+      }
+
+      if (window.tidioChatApi) {
+
+        window.tidioChatApi.on('ready', onTidioChatApiReady)
+
+      }
+
+      else {
+
+        document.addEventListener('tidioChat-ready', onTidioChatApiReady);
+
+      }
+
+    })();
+
+  </script>
+
+</body>
 
 </html>

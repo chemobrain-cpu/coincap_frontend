@@ -14,14 +14,14 @@
 }
 
 .dashboardheader .headerleft h1 {
-    font-size: 1.5rem
+    font-size: 1.7rem
 }
 
 .dashboardheader .headerleft .logo {
     display: none;
     color: var(--color-blue);
     cursor: pointer;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     font-weight: 900;
 }
 
@@ -60,16 +60,16 @@
     padding: 10px;
     border-radius: 100%;
     background-color: var(--color-fade);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-right: 10px;
 }
 
 .headerrightinner .span {
-    background-color: grey;
-    color: #fff;
+    color: var(--color-background);
     display: none;
 
 }
+
 
 .headerrightinner .profileimage {
     width: 60px;
@@ -81,8 +81,32 @@
     border-left: 1px solid var(--color-fade);
 }
 
+.headerrightinner .profileimage span {
+    color: var(--color-background);
+    background-color:var(--color-fader);
+    font-size:2.5rem;
+    width:40px;
+    height:40px;
+    border-radius:40px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+}
+
 .headerrightinner .menu {
     display: none;
+}
+
+/*styling the notification container*/
+.notificationContainer{
+    position:relative
+}
+
+.notificationContainer span:nth-of-type(2){
+    position:absolute;
+    top:0px;
+    left:20px
 }
 
 @media screen and (max-width: 1200px) {

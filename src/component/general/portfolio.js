@@ -28,7 +28,7 @@ function Portfolio() {
 
                         <div className={styles.portfolio_content_logo} data-aos="fade-up">
                             <div className={styles.portfolio_content_logo_con}>
-                                <img src="../../coinbase_bar1.jpg" />
+                                <img src="../../coinbase_check.jpg" />
 
                             </div>
 
@@ -115,7 +115,7 @@ function Portfolio() {
 
 
                 <div className={styles.portfolio_imageCon} data-aos="fade-up">
-                    <img src='../../coinbase_image1.jpg' />
+                    <img src='../../homedesktop.jpeg' />
 
                 </div>
 

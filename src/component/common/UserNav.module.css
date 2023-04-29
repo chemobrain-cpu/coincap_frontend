@@ -62,11 +62,20 @@
   justify-content: flex-start;
   width: 100%;
   padding-left: 10px;
-
-
-
 }
 
+.desktop_button{
+  background-color:#1652f0;
+  color:#fff;
+  width:120px;
+  padding-top:11px;
+  padding-bottom:11px;
+  padding-left: 0px;
+  text-align: center;
+  font-size:1rem;
+  font-weight: 300;
+  padding-right:5px
+}
 
 .nav_links:hover {
   border-bottom: 4px solid #fff;

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import styles from './PhoneVerification.module.css';
 import { cancelRegisteration, phoneVerification } from "../../../store/action/userAppStorage";
 import { useDispatch } from "react-redux";
@@ -144,7 +144,7 @@ function PhoneVerification() {
 
                 <p className={styles.paragraphText}>A text message with a 7-digit code has been sent to {hashFun(phoneId)} . This helps us keep your account secure by verifying thats its really you. </p>
 
-                <form onSubmit={submitHandler}>
+                <form >
                     <label>Enter verification code</label>
                     <input onChange={changeCodeHandler}
                         value={code}
@@ -152,10 +152,9 @@ function PhoneVerification() {
                     />
                     <p className={styles.codeerror}>{codeError}</p>
 
+                    <SubmitBtn text='Submit' style={{ color: '#fff' }} onClick={submitHandler} />
 
-                    <SubmitBtn text='Submit' style={{ color: '#fff' }} />
-
-                    <SubmitBtn text='Resend code' style={{ color: '#fff',backgroundColor:'rgb(240,240,240)' }} buttonTextColor='black' />
+                    <SubmitBtn text='Resend code' style={{ color: '#fff',backgroundColor:'rgb(240,240,240)' }} buttonTextColor='black' onClick={()=>navigate(-1)} />
 
                 </form>
 

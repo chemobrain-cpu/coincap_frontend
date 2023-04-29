@@ -58,6 +58,8 @@
     font-weight:600;
     border:1px solid rgb(150,150,150);
     padding-left: 10px;
+    font-family:Poppins;
+    color:var(--fadeText)
 }
 
 .screenContainer form .phoneerror{
@@ -100,15 +102,28 @@
     margin-bottom: 50px;
 }
 
+@media screen and (max-width:750px){
+    /* styling the screen container */
+.screenContainer {
+    padding-top: 0px;
+}
+
+.screenContainer .innerContainer {
+    width: 100%;
+}
+
+    .screenContainer .headText {
+        font-size: 2rem;
+    }
+}
 
 
 
 @media screen and (max-width: 520px) {
     .screenContainer .innerContainer {
-        width: 98%;
-        padding: 35px;
+        width: 100%;
+        padding: 10px;
         border: none;
-        border-radius: 20px;
 
     }
 

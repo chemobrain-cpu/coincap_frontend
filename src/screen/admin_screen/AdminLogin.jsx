@@ -11,7 +11,17 @@ import LoadingModal from "../../component/Modal/LoadingModal"
 import Modal from "../../component/Modal/Modal"
 //import routers
 import {useNavigate} from 'react-router-dom'
-import FormInput from '../../component/common/input-card/input';
+import FormInput from '../../component/common/input';
+
+
+
+
+
+
+
+
+
+
 
 //let { admin} = useSelector(state => state.userAuth)
 function LoginScreen() {

@@ -1,84 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styles from '../Home.module.css';
 import { useDispatch } from "react-redux";
 import {
   getDetailedCoinData,
   getCoinMarketChart,
-  getCandleChartData,
-  loadCoins
+  addToWatchList
 } from "../../../store/action/userAppStorage";
-
-import { useParams } from 'react-router-dom';
-import {VictoryLine,VictoryChart,VictoryAxis} from 'victory'
-
-
-
-
-
-let data = [
-  [1680289268326, 28396.930826425294],
-  [1680292871293, 28480.679190765833],
-  [1680296417486, 28449.801858037066],
-  [1680300074032, 28545.696125542672],
-  [1680303632077, 28614.720752692487],
-  [1680307255714, 28512.59557632949],
-  [1680310885571, 28461.85231762472],
-  [1680314432753, 28630.791082786527],
-  [1680318054545, 28616.450159987104],
-  [1680321649074, 28592.13249069683],
-  [1680325270853, 28614.036511384336],
-  [1680328866159, 28606.087345747008],
-  [1680332469771, 28516.00446026185],
-  [1680336025405, 28482.773400308706],
-  [1680339687239, 28489.062789309723],
-  [1680343206077, 28472.541617701205],
-  [1680346911417, 28497.089317751925],
-  [1680350491639, 28431.090850350232],
-  [1680354010504, 28466.964412373334],
-  [1680357666461, 28453.623792675688],
-  [1680361311338, 28369.27869767466],
-  [1680364828334, 28426.160144518566],
-  [1680368509686, 28370.86183763751],
-  [1680372049718, 28393.676717620543],
-  [1680374487000, 28375.468320467866]
-]
-
-
-
+import { useParams, useNavigate } from 'react-router-dom';
+import { CoinChart } from './CoinChart';
+import { About } from './About';
+import { MarketStat } from './MarketStat';
+import { Loader } from '../Loader';
+import Modal from '../../Modal/Modal';
+import millify from 'millify'
+import { Error } from '../Error';
+import { useSelector} from "react-redux";
 
 
 
 const Chart = () => {
   const [coin, setCoin] = useState(null);
   const [coinMarketData, setCoinMarketData] = useState(null);
-  const [coinCandleChartData, setCoinCandleChartData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isDataError, setIsDataError] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [selectedRange, setSelectedRange] = useState("1");
+  const [isErrorModal, setIsErrorModal] = useState(false);
+  const [isErrorModalInfo, setIsErrorModalInfo] = useState(false);
+  const [userStatus, setUserStatus] = useState('');
+  let [filterText, setFilterText] = useState('1')
+  let { user,color } = useSelector(state => state.userAuth)
+  const navigate = useNavigate()
   let dispatch = useDispatch()
 
 
   //destructuring data from navigation
   const {
-    coinId,
+    name: coinId,
+    market_cap,
+    market_cap_rank,
+    percentage,
+    total_volume,
+    price
   } = useParams();
 
 
 
 
-  const fetchCoinData = async () => {
-    setIsLoading(true)
-    const fetchedCoinData = await dispatch(getDetailedCoinData(coinId));
-    if (!fetchedCoinData.bool) {
-      //throw error screen
-      setIsError(true)
-      setIsLoading(false)
-      return
-    }
-    setCoin(fetchedCoinData.message);
-    setIsLoading(false)
 
-  };
 
 
   const fetchMarketCoinData = async (selectedRangeValue) => {
@@ -89,7 +57,7 @@ const Chart = () => {
     ));
     if (!fetchedCoinMarketData.bool) {
       //throw error screen
-      setIsError(true)
+      setIsDataError(true)
       setIsLoading(false)
       return
     }
@@ -97,24 +65,101 @@ const Chart = () => {
     setIsLoading(false)
   };
 
-
-  const fetchCandleStickChartData = async (selectedRangeValue) => {
+  const fetchCoinData = async () => {
     setIsLoading(true)
-    const fetchedSelectedCandleChartData = await dispatch(getCandleChartData(
-      coinId,
-      selectedRangeValue
-    ));
-    if (!fetchedSelectedCandleChartData.bool) {
+    const fetchedCoinData = await dispatch(getDetailedCoinData(coinId));
+    if (!fetchedCoinData.bool) {
       //throw error screen
+      console.log(fetchedCoinData)
       setIsError(true)
       setIsLoading(false)
       return
     }
-    setCoinCandleChartData(fetchedSelectedCandleChartData.message);
+    setCoin(fetchedCoinData.message)
     setIsLoading(false)
+
   };
 
+  const changeSelectedDay = (data) => {
+    setFilterText(data)
+    fetchMarketCoinData(data);
+  }
 
+
+  useEffect(() => {
+    fetchCoinData().then(data => {
+      fetchMarketCoinData(1);
+    }
+    )
+
+
+  }, []);
+
+
+  const addAssetToWatchList = async () => {
+    setIsLoading(true)
+    let res = await dispatch(addToWatchList({ id: coinId, user: user }))
+    if (!res.bool) {
+      setIsErrorModal(true)
+      setIsErrorModalInfo('could not add to watchlist.try later')
+      setIsLoading(false)
+      return
+    }
+    setIsLoading(false)
+  }
+
+
+  let tryAgain = useCallback(() => {
+    fetchMarketCoinData(1);
+    fetchCoinData();
+  })
+
+
+  let closeModal = () => {
+    if (!userStatus) {
+      setIsErrorModal(false)
+      setIsErrorModalInfo('')
+      return
+    } else if (userStatus == 'pay') {
+      //navigate to page to add payment credentials
+      navigate(`/add-card/${user.email}`)
+
+    } else if (userStatus == 'id') {
+      //navigate to add identity page
+      navigate(`/idverification`)
+    }
+
+
+  }
+
+  let handleNavigateHandler = () => {
+
+    if (!user.isPayVerified) {
+      setUserStatus('pay')
+      setIsErrorModal(true)
+      setIsErrorModalInfo("You need to activate your account to start trading")
+      return
+    }
+
+    if (!user.isFrontIdVerified || !user.isBackIdVerified) {
+      setUserStatus('id')
+      setIsErrorModal(true)
+
+      setIsErrorModalInfo("please you need to verify your identity before you can start trading on crypto assets")
+      return
+    }
+    //navigate to calculator screen
+    navigate(`/calculate/buy/${coin.id}/${coin.symbol}/${price}/bank`)
+
+
+
+
+  }
+
+
+  if (isError || isDataError) {
+    return <Error tryAgain={tryAgain} />
+  }
 
 
 
@@ -124,54 +169,43 @@ const Chart = () => {
 
 
   return (
-    <div className={styles.chartScreen}>
+    <>
+      {isErrorModal ? <Modal content={isErrorModalInfo} closeModal={closeModal} /> : <></>}
+      
+      {!isLoading ? <div className={styles.chartScreen} style={{backgroundColor:color.background}}>
 
-      <div className={styles.timeline}>
-        <div className={styles.coinChartCon}>
-          <div>
-
-          </div>
-
-          
-          <VictoryChart>
-            <VictoryLine data={data.map(([timestamp, value]) => ({ y:timestamp, x:value }))}
-            interpolation='natural' style={{
-              data:{
-                stroke:'green',
-                strokeWidth:3
-              }
-            }}>
-
-            </VictoryLine>
-
-            <VictoryAxis style={{
-              axis:{stroke:'none'},
-              tickLabels:{fill:'transparent'},
-              data:{stroke:'red'},
-
-              }}/>
-          </VictoryChart>
-
-          
-
-        </div>
-      </div>
-
-
-
-      <div className={styles.rightBar}>
-        <div className={styles.aboutCoin}>
-
-        </div>
-
-        <div className={styles.marketStats}>
-
+        <div className={styles.timeline}>
+          <CoinChart filterText={filterText}
+            changeSelectedDay={changeSelectedDay}
+            data={coinMarketData}
+            market_cap={millify(market_cap)}
+            market_cap_rank={market_cap_rank}
+            percentage={percentage}
+            total_volume={millify(total_volume)}
+            coin={coin}
+            addAssetToWatchList={addAssetToWatchList}
+            price={price}
+            handleNavigateHandler={handleNavigateHandler}
+          />
         </div>
 
 
-      </div>
 
-    </div>
+        <div className={styles.rightBar}>
+
+          {coin ? <About coin={coin} /> : <></>}
+
+          <MarketStat market_cap={millify(market_cap)}
+            market_cap_rank={market_cap_rank}
+            percentage={percentage}
+            total_volume={millify(total_volume)}
+          />
+
+
+        </div>
+
+      </div> : <Loader />}
+    </>
   )
 }
 

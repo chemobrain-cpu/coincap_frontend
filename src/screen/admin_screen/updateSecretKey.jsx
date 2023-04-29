@@ -9,8 +9,15 @@ import { useNavigate, useParams } from 'react-router-dom'
 import LoadingModal from "../../component/Modal/LoadingModal"
 import Modal from "../../component/Modal/Modal";
 import NavBar from '../../component/common/UserNav';
-import SelectCard from '../../component/common/input-card/select';
-import FormInput from '../../component/common/input-card/input';
+import SelectCard from '../../component/common/select';
+import FormInput from '../../component/common/input';
+
+
+
+
+
+
+
 
 let ForgetSecretKeyScreen = () => {
     let [userKey, setUserKey] = useState("")

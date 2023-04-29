@@ -1,16 +1,15 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback,useEffect } from 'react';
 import styles from './EmailLogin.module.css';
 //import nav bar
-import FormInput from '../../../component/common/input-card/input';
+import FormInput from '../../../component/common/input';
 import SubmitBtn from "../../../component/common/Submit";
 import { isEmailExist } from "../../../store/action/userAppStorage";
 import { useDispatch } from "react-redux";
 //importing modals
-import LoadingModal from "../../../component/Modal/LoadingModal"
-
+import LoadingModal from "../../../component/Modal/LoadingModal";
 //import routers
-import { useNavigate } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom';
+import { useSelector} from "react-redux";
 
 //let { admin} = useSelector(state => state.userAuth)
 function LoginScreen() {
@@ -21,6 +20,7 @@ function LoginScreen() {
   let [isLoading, setIsLoading] = useState(false)
   //initialising reduzx
   let dispatch = useDispatch()
+  let { color } = useSelector(state => state.userAuth)
   //initialise router
   let navigate = useNavigate()
   //loaders state
@@ -51,6 +51,7 @@ function LoginScreen() {
 
   const submitHandler = async (e) => {
     e.preventDefault()
+
     if (!isFormValid) {
       return
     }
@@ -66,14 +67,16 @@ function LoginScreen() {
     } else {
       setIsLoading(false)
       //navigate to login
+
       navigate(`/signin/${userEmail}`)
 
     }
   }
 
-  const goBackHandler = ()=>{
+  const goBackHandler = () => {
     navigate('/')
   }
+
 
 
 
@@ -112,7 +115,7 @@ function LoginScreen() {
 
 
         <div className={styles.piracyContainer} >
-          <p onClick={() => navigateHandler('/policy')}>Privacy Policy</p>
+          <p onClick={() => navigateHandler('/policy')}  >Privacy Policy</p>
         </div>
 
       </form >

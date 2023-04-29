@@ -1,9 +1,14 @@
 import React from 'react';
 import styles from './Balance.module.css';
+import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
 
 
 export const Balance = () => {
+  let { user,color } = useSelector(state => state.userAuth)
+  let navigate = useNavigate()
+
   let listData = [{
     key: 'favorite',
     icon: 'favorite',
@@ -22,13 +27,19 @@ export const Balance = () => {
 
   ]
 
+  let buyHandler  =()=>{
+    navigate('/assets/buy')
+  }
+
+
+
   return (
-    <div className={styles.balance}>
-      <h1 className={styles.balanceAmount}>Portfolio Balance</h1>
-      <h1 className={styles.balanceAmount}>$0.00</h1>
+    <div className={styles.balance} style={{backgroundColor:color.background}}>
+      <h1 className={styles.balanceAmount} style={{color:color.importantText}}>Portfolio Balance</h1>
+      <h1 className={styles.balanceAmount} style={{color:color.importantText}}>${Number(user.accountBalance).toFixed(2)}</h1>
 
       <div className={styles.actionOuterCon}>
-        <h2>Get started with bitcoin</h2>
+        <h2 style={{color:color.normalText}}>Get started with bitcoin</h2>
         <p className={styles.actionabout}>Learn more</p>
 
         <div className={styles.actionCon}>
@@ -37,8 +48,8 @@ export const Balance = () => {
             {listData.map(data => <div className={styles.list} key={data.key}>
               <div className={styles.iconCon}>
 
-                <div className={styles.icon}>
-                  <span className='material-icons'>
+                <div className={styles.icon} style={{backgroundColor:color.fadeButtonColor}}>
+                  <span className='material-icons' style={{color:color.importantText}}>
                     {data.icon}
                   </span>
                 </div>
@@ -46,7 +57,7 @@ export const Balance = () => {
               </div>
 
               <div className={styles.textCon}>
-                <p>{data.text}</p>
+                <p style={{color:color.importantText}}>{data.text}</p>
               </div>
 
             </div>)}
@@ -56,16 +67,15 @@ export const Balance = () => {
 
           </div>
 
-          <div className={styles.actionRight}>
-
-            <div className={styles.buyContainer}>
-              <div className={styles.iconContainer}>
-                <span className='material-icons'>person</span>
-                <p><span>3,220</span> customers bought bitcoin today</p>
+          <div className={styles.actionRight} style={{backgroundColor:color.background}}>
+            <div className={styles.buyContainer} style={{backgroundColor:color.background,border:`1px solid ${color.normalText}`}}>
+              <div className={styles.iconContainer} style={{backgroundColor:color.background}}>
+                <span className='material-icons' style={{color:color.importantText}}>person</span>
+                <p  style={{color:color.normalText}}><span>3,220</span> customers bought bitcoin today</p>
               </div>
 
 
-              <button>
+              <button onClick={buyHandler}>
                 Buy Bitcoin
               </button>
 

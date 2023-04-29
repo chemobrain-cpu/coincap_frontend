@@ -63,9 +63,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 7px;
+    padding: 10px;
     border-radius: 100%;
-    background-color: var(--color-fader);
+    background-color: var(--color-fade);
 }
 
 .balance .actionCon .actionLeft .list .icon span {

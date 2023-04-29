@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import styles from './signup.module.css';
 //importing modals
 import LoadingModal from "../../../component/Modal/LoadingModal"
-import FormInput from "../../../component/common/input-card/input";
+import FormInput from "../../../component/common/input";
 import SubmitBtn from "../../../component/common/Submit";
 import { signupUser } from "../../../store/action/userAppStorage";
 import { useDispatch } from "react-redux";
@@ -14,11 +14,8 @@ function SignupScreen() {
     let [userPassword, setUserPassword] = useState("")
     let [userFirstName, setUserFirstName] = useState("")
     let [userLastName, setUserLastName] = useState("")
-
     let [isFirstNameError, setIsFirstNameError] = useState("")
-
     let [isCheckbox, setIsCheckbox] = useState(false)
-
     let [isLastNameError, setIsLastNameError] = useState("")
     let [isEmailError, setIsEmailError] = useState("")
     let [isPasswordError, setIsPasswordError] = useState("")
@@ -62,8 +59,9 @@ function SignupScreen() {
             setIsLastNameError(e.error)
         }
     }, [])
-    let checkBoxHandler = ()=>{
-        setIsCheckbox(prev=>!prev)
+
+    let checkBoxHandler = () => {
+        setIsCheckbox(prev => !prev)
     }
 
     const submitHandler = async (e) => {
@@ -95,14 +93,14 @@ function SignupScreen() {
         navigate(isUrl)
     }
 
-    const goBackHandler = ()=>{
+    const goBackHandler = () => {
         navigate('/')
-      }
+    }
 
     return (<>
         {isLoading && <LoadingModal />}
         {isError && <Modal content={isErrorInfo} closeModal={closeModal} />}
-        
+
         <div className={styles.signupNavigation}>
 
             <div className={styles.navigationLeft}>
@@ -112,7 +110,7 @@ function SignupScreen() {
 
             </div>
             <div className={styles.navigationRight}>
-                <button onClick={()=>navigateHandler('/login')}>
+                <button onClick={() => navigateHandler('/login')}>
                     Sign In
                 </button>
 
@@ -198,8 +196,8 @@ function SignupScreen() {
 
                     <div className={styles.policy_container}>
                         <div className={styles.policy_left}>
-                            <input type={'checkbox'} value={true}
-                            onChange={checkBoxHandler} style={{backgroundColor:isCheckbox?'#1652f0':'#fff'}} />
+                            <input type='checkbox' value={true}
+                                onChange={checkBoxHandler} style={{ backgroundColor: isCheckbox ? '#1652f0' : '#fff' }} />
                         </div>
 
                         <div className={styles.policy_right}>

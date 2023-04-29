@@ -122,9 +122,8 @@ function Nav({navigateToApp}) {
             <li className={styles.nav_item}>
               <Link
                 to='/learn'
-                className={styles.nav_link}
-                onClick={closeLearnDesktop}
-                style={{backgroundColor:'#1652f0',color:'#fff',width:'120px',padding:'0px',paddingTop:'9px',paddingBottom:'9px',display:'flex',alignItems:'center',justifyContent:'center',borderRadius:'5px'}}>
+                className={`${styles.nav_link} ${styles.desktop_button}`} style={{color:'#fff'}}
+                onClick={closeLearnDesktop}>
                 Learn Basics
               </Link>
 

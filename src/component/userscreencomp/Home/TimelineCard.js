@@ -1,12 +1,16 @@
 import React from 'react';
 import styles from './TimelineCard.module.css';
+import { useSelector } from "react-redux";
 
 
-export const TimelineCard = ({ data,onClick }) => {
+export const TimelineCard = React.memo(({ data,onClick }) => {
+  let { color } = useSelector(state => state.userAuth)
 
   return (<div className={styles.timelineCards} onClick={()=>{
     onClick(data.browserUrl)
-  }}>
+  }} style={{backgroundColor:color.background}}>
+
+
     <div className={styles.timelineCardleft}>
       <div className={styles.timelineImg}>
         <div className={styles.heading}>
@@ -15,14 +19,14 @@ export const TimelineCard = ({ data,onClick }) => {
               question_mark
             </span>
             <div className={styles.headingText}>
-              <p>{data.title}</p>
-              <p>{data.action}</p>
+              <p style={{color:color.importantText}}>{data.title}</p>
+              <p style={{color:color.normalText}}>{data.action}</p>
             </div>
 
           </div>
 
           <div className={styles.headingIcon}>
-            <span className='material-icons'>
+            <span className='material-icons' style={{color:color.importantText}}>
               more_vert
             </span>
 
@@ -61,15 +65,15 @@ export const TimelineCard = ({ data,onClick }) => {
         <p className={styles.aboutText}>{data.about}</p>
 
         <div className={styles.aboutIconContainer}>
-          <span className='material-icons'>
+          <span className='material-icons' style={{color:color.importantText}}>
             favorite_outline
           </span>
 
-          <p>
+          <p style={{color:color.importantText}}>
             {data.likeNo}
           </p>
 
-          <span className='material-icons'>
+          <span className='material-icons' style={{color:color.importantText}}>
             share
           </span>
 
@@ -95,14 +99,14 @@ export const TimelineCard = ({ data,onClick }) => {
             question_mark
           </span>
           <div className={styles.headingText}>
-            <p>Coincap Learn</p>
-            <p>Explainers</p>
+            <p style={{color:color.importantText}}>Coincap Learn</p>
+            <p style={{color:color.normalText}}>Explainers</p>
           </div>
 
         </div>
 
         <div className={styles.headingIcon}>
-          <span className='material-icons'>
+          <span className='material-icons' style={{color:color.importantText}}>
             more_vert
           </span>
 
@@ -113,19 +117,19 @@ export const TimelineCard = ({ data,onClick }) => {
 
       <div className={styles.timelineAbout}>
 
-        <h1 className={styles.aboutHead}>{data.topic}</h1>
-        <p className={styles.aboutText}>{data.about}</p>
+        <h1 className={styles.aboutHead} style={{color:color.importantText}}>{data.topic}</h1>
+        <p className={styles.aboutText} style={{color:color.normalText}}>{data.about}</p>
 
         <div className={styles.aboutIconContainer}>
-          <span className='material-icons'>
+          <span className='material-icons' style={{color:color.importantText}}>
             favorite_outline
           </span>
 
-          <p>
+          <p style={{color:color.importantText}}>
             {data.likeNo}
           </p>
 
-          <span className='material-icons'>
+          <span className='material-icons' style={{color:color.importantText}}>
             share
           </span>
 
@@ -155,4 +159,4 @@ export const TimelineCard = ({ data,onClick }) => {
 
 
   )
-}
+})

@@ -1,12 +1,17 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import styles from './sidebar.module.css';
-
-
+import { useSelector } from "react-redux";
 
 
 const Sidebar = ({status}) => {
     let navigate = useNavigate()
+    let { color } = useSelector(state => state.userAuth)
+
+    let menuBackgroundColor = color.fadeColor?'rgba(0,0,255,0.2)':''
+
+    let menutextColor = color.fadeColor?'blue':'#1652f0'
+
 
     let navigateHandler = (data)=>{
         navigate(data)
@@ -34,25 +39,28 @@ const Sidebar = ({status}) => {
             link:'/pay'
         },
         {
-            icon: 'notifications',
-            title: 'Notification',
-            link:'/notification'
-        }
+            icon: 'settings',
+            title: 'Settings',
+            link:'/profilesettings'
+        },
+       
+        
     ]
 
-    return (<div className={styles.sidebar}>
-        <div className={styles.topSection}>
+    return (<div className={styles.sidebar} style={{backgroundColor:color.background}}>
+        <div className={styles.topSection} style={{backgroundColor:color.background}}>
             <h1>coincap</h1>
             <div className={styles.logoContainer}>
                 <img src='../../../icon.png' />
-
             </div>
         </div>
 
         <div className={styles.middleSection}>
             <ul>
                 {linkData.map(data => <li onClick={()=>navigateHandler(data.link)}
-                    key={data.title} style={{backgroundColor:status===`${data.title}`?'rgb(244, 244, 244)':'' }}><span className='material-icons' style={{color:status===`${data.title}`?'#1652f0':'' }}>{data.icon}</span><p style={{color:status===`${data.title}`?'#1652f0':'' }}>{data.title}</p>
+                    key={data.title} style={{backgroundColor:status===`${data.title}`?menuBackgroundColor:'' }}><span className='material-icons' style={{color:status===`${data.title}`?menutextColor:'' }}>{data.icon}</span>
+                    
+                    <p style={{color:status===`${data.title}`?menutextColor:color.normalText }}>{data.title}</p>
                     <div >
                         {data.title}
                     </div>
@@ -62,13 +70,13 @@ const Sidebar = ({status}) => {
             </ul>
         </div>
 
-        <div className={styles.bottomSection}>
+        <div className={styles.bottomSection} style={{backgroundColor:color.fadeColor}}>
             <div className={styles.imgCon}>
                 <img src='../../../coinbase_gift.png' />
             </div>
             <div className={styles.textCon}>
-                <h1>Get $10</h1>
-                <p>Invite friends</p>
+                <h1 style={{color:color.importantText}}>Get $10</h1>
+                <p style={{color:color.normalText}}>Invite friends</p>
 
             </div>
         </div>

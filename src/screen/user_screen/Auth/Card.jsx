@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Card.module.css';
-import { cancelRegisteration } from "../../../store/action/userAppStorage";
 import { useDispatch } from "react-redux";
 //importing modals
 import LoadingModal from "../../../component/Modal/LoadingModal";
@@ -17,8 +16,6 @@ function Card() {
 
     let { id } = useParams()
 
-    //initialising reduzx
-    let dispatch = useDispatch()
 
     //initialise router
     let navigate = useNavigate()
@@ -35,7 +32,7 @@ function Card() {
     })
 
     let cardHandler = ()=>{
-        navigate('/add-card')
+        navigate(`/add-card/${id}`)
     }
 
     let skipHandler = ()=>{

@@ -9,6 +9,7 @@
     position: relative;
     height: 100%;
     z-index: 2000;
+    color:#475883
 }
 
 
@@ -107,6 +108,9 @@
 
 .sidebar .textCon p {
     font-size: 1.1rem;
+}
+.sidebar .middleSection li p {
+    font-size: 1.2rem;
 }
 
 

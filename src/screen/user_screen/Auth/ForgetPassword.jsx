@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 import LoadingModal from "../../../component/Modal/LoadingModal"
 import Modal from "../../../component/Modal/Modal"
-import FormInput from '../../../component/common/input-card/input';
+import FormInput from '../../../component/common/input';
 
 let ForgetPasswordScreen = () => {
     let [userEmail, setUserEmail] = useState("")

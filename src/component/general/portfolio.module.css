@@ -87,8 +87,7 @@
 }
 
 .portfolio_imageCon img {
-    width: 65%;
-    box-shadow: 5px 3px 3px 5px rgb(228, 228, 228);
+    width: 70%;
     justify-self: flex-start;
     margin-top: 20px;
     margin-left: 30px
@@ -144,7 +143,6 @@
 
     .portfolio_imageCon img {
         width: 100%;
-        box-shadow: 5px 3px 3px 5px rgb(228, 228, 228);
 
     }
 }
@@ -230,8 +228,7 @@
 
     }
     .portfolio_imageCon img {
-        width: 90%;
-        box-shadow: 5px 3px 3px 5px rgb(228, 228, 228);
+        width: 100%;
         justify-self: flex-start;
         margin-top: 20px;
         margin-left:0px

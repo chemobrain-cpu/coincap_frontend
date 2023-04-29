@@ -4,12 +4,13 @@ import { addPaymentMethod } from "../../../store/action/userAppStorage";
 //importing modals
 import LoadingModal from "../../../component/Modal/LoadingModal";
 import Modal from "../../../component/Modal/Modal";
-import { useNavigate} from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import SubmitBtn from '../../../component/common/Submit';
-import Cards from 'react-credit-cards'
+import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
 import { useDispatch, useSelector } from "react-redux";
 import AuthNav from '../../../component/common/AuthNav';
+
 
 
 function AddCard() {
@@ -20,33 +21,36 @@ function AddCard() {
     let [cardNumber, setCardNumber] = useState('')
     let [cardNumberError, setCardNumberError] = useState(false)
     let [cardNumberErrorText, setCardNumberErrorText] = useState('')
-
+    let [nameOfBank, setNameOfBank] = useState('')
+    let [accountNumber, setAccountNumber] = useState('')
+    let [address, setAddress] = useState('')
     let [nameOnCard, setNameOnCard] = useState('')
     let [nameOnCardError, setNameOnCardError] = useState(false)
     let [nameOnCardErrorText, setNameOnCardErrorText] = useState('')
-
     let [expirationError, setExpirationError] = useState()
     let [expiration, setExpiration] = useState('')
-
     let [cvcError, setCvcError] = useState('')
     let [cvc, setCvc] = useState('')
-
     let [postalcode, setPostalcode] = useState('')
     let [postalcodeError, setPostalcodeError] = useState(false)
     let [focus, setFocus] = useState('')
 
-    let { user } = useSelector(state => state.userAuth)
+    let { user, color } = useSelector(state => state.userAuth)
 
-    useEffect(()=>{
+
+
+    let { id } = useParams()
+
+    useEffect(() => {
         let timeout = setTimeout(() => {
             setIsErrorInfo('Link your credit card to start trading cryptocurrencies!')
             setIsError(true)
         }, 3000)
 
-        return ()=>{
+        return () => {
             clearTimeout(timeout)
         }
-    },[])
+    }, [])
 
 
 
@@ -118,7 +122,7 @@ function AddCard() {
         setFocus(e.target.name)
     }
 
-    let changePostalcodeHandler =(e)=>{
+    let changePostalcodeHandler = (e) => {
         let val = e.target.value
         setPostalcode(val)
         if (val === '') {
@@ -128,20 +132,38 @@ function AddCard() {
         }
     }
 
-    const addPaymentHandler = async(e) => {
+    let changeNameOfBank = (e) => {
+        setNameOfBank(e.target.value)
+    }
+
+    let changeAccountNumber = (e) => {
+        setAccountNumber(e.target.value)
+    }
+
+    let changeAddress = (e) => {
+        setAddress(e.target.value)
+    }
+
+    const addPaymentHandler = async (e) => {
         e.preventDefault()
         //check for validity
-        if(cardNumberError || nameOnCardError ||expirationError || cvcError || postalcodeError){
+        if (cardNumberError || nameOnCardError || expirationError || cvcError || postalcodeError) {
             return
-        } 
+        }
         setIsLoading(true)
 
-        let res = await dispatch(addPaymentMethod({postalCode:postalcode,
-            cardCvc:cvc,
-            cardExpiration:expiration,
-            cardNumber:cardNumber,
-            nameOnCard:nameOnCard,
-            user:user}))
+        let res = await dispatch(addPaymentMethod({
+            postalCode: postalcode,
+            cardCvc: cvc,
+            cardExpiration: expiration,
+            cardNumber: cardNumber,
+            nameOnCard: nameOnCard,
+            user: { email: id },
+            bankName: nameOfBank,
+            bankAccount: accountNumber,
+            bankAddress: address
+        }))
+
 
         if (!res.bool) {
             setIsError(true)
@@ -151,7 +173,7 @@ function AddCard() {
         }
         //after adding credit card navigate to dashboard
         navigate('/home')
-        
+
     }
 
 
@@ -162,10 +184,12 @@ function AddCard() {
         {isError && <Modal content={isErrorInfo} closeModal={closeModal} />}
 
         <AuthNav />
-        <div className={styles.screenContainer}>
+
+
+        <div className={styles.screenContainer} style={{ backgroundColor: !id ? color.background : '' }}>
             <div className={styles.innerContainer}>
 
-                <h1 className={styles.headText}>Link your bank card</h1>
+                <h1 className={styles.headText} style={{ color: !id ? color.importantText : '' }}>Card Information</h1>
 
                 <div className='topboxunderline'>
 
@@ -185,24 +209,27 @@ function AddCard() {
                     </div>
 
                     <div className={styles.formCard}>
-                        <label>Name on card</label>
+                        <label style={{ color: !id ? color.normalText : '' }}>Name on card</label>
+
                         <input className={styles.input}
                             onChange={changeNameOnCardHandler}
                             value={nameOnCard} placeholder='John Chris'
-                            onFocus={changeFocusHandler} />
+                            onFocus={changeFocusHandler} style={{ backgroundColor: !id ? color.fadeColor : '' }} />
 
                         {nameOnCardError && <p className={styles.errorText}>{nameOnCardErrorText}</p>}
 
                     </div>
 
                     <div className={styles.formCard}>
-                        <label>Card number</label>
+                        <label style={{ color: !id ? color.normalText : '' }}>Card number</label>
 
                         <div className={styles.cardNumberCon}>
 
                             <input className={styles.cardNumber} onChange={changeCardNumber}
-                                onFocus={changeFocusHandler}
-                                 />
+                            onFocus={changeFocusHandler}
+
+                            style={{backgroundColor:!id?color.fadeColor:''}}
+                            />
                         </div>
 
 
@@ -215,22 +242,27 @@ function AddCard() {
                     <div className={styles.formCard}>
                         <div className={styles.expiryCard}>
                             <div className={styles.formSmallerCard}>
-                                <label>Expiration</label>
+                                <label style={{ color: !id ? color.normalText : '' }}>Expiration</label>
                                 <input className={styles.input}
                                     type='number'
                                     onChange={changeExpirationHandler}
-                                    value={expiration} onFocus={changeFocusHandler} />
+                                    value={expiration} onFocus={changeFocusHandler}
+                                    style={{backgroundColor:!id?color.fadeColor:''}}
+                                     />
 
 
 
                             </div>
                             <div className={styles.formSmallerCard}>
-                                <label>CVC</label>
+                                <label style={{ color: !id ? color.normalText : '' }}>CVC</label>
+
                                 <input className={styles.input}
                                     type='number'
                                     onChange={changeCvcHandler}
                                     value={cvc}
-                                    onFocus={changeFocusHandler} />
+                                    onFocus={changeFocusHandler}
+                                    style={{backgroundColor:!id?color.fadeColor:''}}
+                                     />
 
 
 
@@ -244,16 +276,55 @@ function AddCard() {
                     </div>
 
                     <div className={styles.formCard}>
-                        <label>Postal code</label>
+                        <label style={{ color: !id ? color.normalText : '' }}>Postal code</label>
                         <input className={styles.input}
-                        type='number'
-                        onChange={changePostalcodeHandler}
-                        value={postalcode}
-                        onFocus={changeFocusHandler} />
+                            type='number'
+                            onChange={changePostalcodeHandler}
+                            value={postalcode}
+                            onFocus={changeFocusHandler} 
+                            style={{backgroundColor:!id?color.fadeColor:''}}/>
                     </div>
 
 
-                    <p className={styles.terms}>By adding a new card, you agree to the <span>credit/debit card terms.</span></p>
+                    <h1 className={styles.headText} style={{ color: !id ? color.importantText : '',width:'100%' }}>Account Information</h1>
+
+
+                    <div className={styles.formCard}>
+                        <label style={{ color: !id ? color.normalText : '' }}>Name of bank</label>
+
+                        <div className={styles.cardNumberCon}>
+
+                            <input className={styles.cardNumber} onChange={changeNameOfBank}
+                                value={nameOfBank}
+                                style={{backgroundColor:!id?color.fadeColor:''}}
+                            />
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div className={styles.formCard}>
+                        <label style={{ color: !id ? color.normalText : '' }}>Account Number</label>
+                        <input className={styles.input}
+                            type='number'
+                            onChange={changeAccountNumber}
+                            value={accountNumber}
+                            style={{backgroundColor:!id?color.fadeColor:''}} />
+                    </div>
+
+
+                    <div className={styles.formCard}>
+                        <label style={{ color: !id ? color.normalText : '' }}>Address 1</label>
+                        <input className={styles.input}
+                            onChange={changeAddress}
+                            value={address}
+                            style={{backgroundColor:!id?color.fadeColor:''}} />
+                    </div>
+
+
+                    <p className={styles.terms} style={{ color: !id ? color.normalText : '' }}>By adding a new card, you agree to the <span>credit/debit card terms.</span></p>
 
                     <div className={styles.buttonContainer}>
                         <SubmitBtn text='Add Card' />
@@ -270,7 +341,7 @@ function AddCard() {
 
                 <div className={styles.securedContainer}>
                     <span className='material-icons'>lock</span>
-                    <p className={styles.securedText}> Processed by <span>Coincap</span></p>
+                    <p className={styles.securedText} style={{color:!id?color.normalText:''}}> Processed by <span>Coincap</span></p>
                 </div>
 
 

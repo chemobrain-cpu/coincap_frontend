@@ -1,6 +1,6 @@
 import React, { useState,  useEffect } from 'react';
 import NavBar from "../../../component/common/UserNav"
-import FormInput from "../../../component/common/input-card/input";
+import FormInput from "../../../component/common/input";
 import styles from "./ResetPassword.module.css";
 import SubmitBtn from "../../../component/common/Submit";
 import Footer from '../../../component/common/Footer'

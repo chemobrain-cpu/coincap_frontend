@@ -18,12 +18,12 @@
 }
 
 .screenContainer .imageContainer img {
-  width: 100%;
+  width: 80%;
 
 }
 
 .screenContainer .verifyHead{
-  font-size:2.6rem;
+  font-size:2rem;
   text-align: center;
   font-weight: 300;
   margin-bottom:20px

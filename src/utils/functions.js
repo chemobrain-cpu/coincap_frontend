@@ -25,6 +25,8 @@ export const hashFun = (num) => {
 
 }
 
+
+
 export const truncate = (str, len) => {
     if (str.length > len) {
         if (len <= 3) {

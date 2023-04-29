@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useCallback } from 'react';
 
 import styles from './coinSection.module.css'
 //import nav bar
@@ -9,43 +9,67 @@ import LoadingModal from "../Modal/LoadingModal"
 import Modal from "../Modal/Modal"
 //import routers
 import { useNavigate } from 'react-router-dom'
-import AOS from 'aos'
+import AOS from 'aos';
 import "aos/dist/aos.css";
+import { useSelector } from "react-redux";
+
 
 function CoinSection() {
-    let [userEmail, setUserEmail] = useState("")
-    let [userPassword, setUserPassword] = useState("")
-    let [isEmailError, setIsEmailError] = useState("")
-    let [isPasswordError, setIsPasswordError] = useState("")
     let [isError, setIsError] = useState(false)
-    let [isErrorInfo, setIsErrorInfo] = useState('')
+    let [isErrorInfo, setIsErrorInfo] = useState(false)
     let [isLoading, setIsLoading] = useState(false)
     let [coins, setCoins] = useState([])
-    //initialising reduzx
+    let [filteredCoins, setFilteredCoins] = useState([])
     let dispatch = useDispatch()
-    //initialise router
     let navigate = useNavigate()
-    //loaders state
-    let isFormValid = userEmail && userPassword && !isEmailError && !isPasswordError
+
+
+    let { user, assetList } = useSelector(state => state.userAuth)
 
     useEffect(async () => {
-        
-        let res = await dispatch(loadCoins())
+        loadingCoins()
+    }, [])
+
+
+    let loadingCoins = useCallback(async () => {
+        if (isLoading || filteredCoins.length > 0) {
+            return
+        }
+        setIsLoading(true)
+        if (assetList.length > 0) {
+            setCoins(assetList)
+            setFilteredCoins(assetList)
+            setIsLoading(false)
+            setIsError(false)
+            return
+
+        }
+        let res = await dispatch(loadCoins(1, 100))
         if (!res.bool) {
+            setIsLoading(false)
             return
         }
         setCoins(res.message)
+        console.log(res.message)
+        setFilteredCoins(res.message)
+        setIsLoading(false)
+        setIsError(false)
+
     }, [])
 
-    useEffect(()=>{
+
+
+
+
+    useEffect(() => {
         AOS.init({
-            duration:1000
+            duration: 1000
         });
     })
 
 
 
-  
+
     const closeModal = () => {
         setIsError(false)
     }
@@ -53,8 +77,11 @@ function CoinSection() {
     return (<>
         {isError && <Modal showModal={isError} closeModal={closeModal} content={isErrorInfo} />}
         {isLoading && <LoadingModal />}
-        {coins.length > 0 && <div className={styles.cointable_container} data-aos="fade-up">
-            {coins.map((data,index)=><div className={styles.cointable_mobile} key={index}>
+
+
+        {filteredCoins.length > 0 && <div className={styles.cointable_container} data-aos="fade-up">
+
+            {filteredCoins.slice(0,4).map((data, index) => <div className={styles.cointable_mobile} key={index}>
                 <div className={styles.cointable_mobile_left}>
                     <div className={styles.cointable_mobile_left_imgCon}>
                         <img src={data.image} />
@@ -90,7 +117,7 @@ function CoinSection() {
 
                     </thead>
                     <tbody>
-                        {coins.map((data, index) => <tr key={index}>
+                        {filteredCoins.slice(0, 5).map((data, index) => <tr key={index}>
                             <td className={styles.number}>{index + 1}</td>
                             <td className={styles.name}>
                                 <div className={styles.tableCellContainer}>
@@ -112,6 +139,7 @@ function CoinSection() {
                 </table>
 
             </div>
+            
         </div>}
     </>
 

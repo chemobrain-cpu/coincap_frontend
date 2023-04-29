@@ -10,7 +10,50 @@ import SubmitBtn from '../../component/common/Submit';
 import { adminsignup } from "../../store/action/userAppStorage";
 import { useDispatch } from "react-redux";
 import {useNavigate} from 'react-router-dom'
-import FormInput from '../../component/common/input-card/input'
+import FormInput from '../../component/common/input';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function SignupScreen() {

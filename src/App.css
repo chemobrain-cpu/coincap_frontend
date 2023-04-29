@@ -14,8 +14,8 @@
     --color-black:black;
     --color-red:brown;
     --color-fader: rgb(230, 230, 230);
-
 }
+
 
 ::placeholder {
     font-size: 1.3rem;
@@ -40,7 +40,6 @@ input:-webkit-autofill:active{
 
 
 /*general styling for all element */
-
 * {
     margin: 0;
     padding: 0;

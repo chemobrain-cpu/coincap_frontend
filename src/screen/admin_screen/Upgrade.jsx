@@ -25,6 +25,7 @@ let UpgradeScreen = () => {
                 return navigate('/')
             }
             let res = await dispatch(loadClients())
+            
             if (!res.bool) {
                 setIsLoading(false)
                 setIsError(true)

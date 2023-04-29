@@ -1,7 +1,7 @@
 import React, { useState, useCallback,useEffect } from 'react';
 import styles from './PasswordLogin.module.css';
 //import nav bar
-import FormInput from "../../../component/common/input-card/input"
+import FormInput from "../../../component/common/input"
 import SubmitBtn from "../../../component/common/Submit";
 import { loginUser } from "../../../store/action/userAppStorage";
 import { useDispatch } from "react-redux";
@@ -83,7 +83,7 @@ function LoginScreen() {
     } else {
 
       setIsLoading(false)
-      //navigate to login
+      navigate('/home')
     }
   }
 

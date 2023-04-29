@@ -40,7 +40,7 @@ function PhoneSignup() {
         if (!id) {
             navigate('/signup')
         }
-    })
+    },[])
 
 
 
@@ -52,10 +52,6 @@ function PhoneSignup() {
             return
         }
         //navigating to verifyPhone for testing purpose
-        navigate(`/verifyPhone/${id}/${phone}`)
-
-        return
-        
         setIsLoading(true)
         //proceed to send sms code
         setIsError(false)

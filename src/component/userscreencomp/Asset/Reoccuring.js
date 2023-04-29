@@ -1,18 +1,22 @@
 import React from 'react';
 import styles from './Reoccuring.module.css';
+import { useSelector } from "react-redux";
 
 
 
 export const Reoccuring = () => {
+    let { color } = useSelector(state => state.userAuth)
+
+
     return (
-        <div className={styles.reoccuringBuyCon}>
+        <div className={styles.reoccuringBuyCon} style={{backgroundColor:color.background}}>
             <div className={styles.heading}>
                 <div className={styles.headingLeft}>
-                    <h1>Recurring buys</h1>
+                    <h1 style={{color:color.importantText}}>Recurring buys</h1>
                 </div>
 
                 <div className={styles.headingRight}>
-                    <p>Add new</p>
+                    <p >Add new</p>
 
                 </div>
 
@@ -23,8 +27,8 @@ export const Reoccuring = () => {
                 </div>
 
                 <div className={styles.textContainer}>
-                    <h3>Learn aboout recurring buys</h3>
-                    <p>Invest daily or weekly or month...</p>
+                    <h3 style={{color:color.importantText}}>Learn aboout recurring buys</h3>
+                    <p style={{color:color.normalText}}>Invest daily or weekly or month...</p>
 
                 </div>
 

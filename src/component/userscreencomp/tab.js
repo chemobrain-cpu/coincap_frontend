@@ -1,11 +1,13 @@
 import React from 'react';
 import styles from './tab.module.css';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 
 
 const TabFooter = ({status}) => {
   let navigate = useNavigate()
+  let { color } = useSelector(state => state.userAuth)
 
   let tabData = [
     {
@@ -34,14 +36,16 @@ const TabFooter = ({status}) => {
     navigate(data)
   }
 
+  const iconColor = color.fadeColor? color.importantText:''
+ const textColor = color.fadeColor? color.normalText : ' '
 
 
   return (
-    <div className={styles.mobilefooter}>
+    <div className={styles.mobilefooter} style={{backgroundColor:color.background,borderBottom:`1px solid ${color.normalText?color.normalText:'#fff'}`}}>
       {tabData.map(data =>
-        <div className={styles.tab} onClick={()=>handleNavigate(data.link)}>
-          <span className='material-icons' style={{color:status===`${data.tabText}`?'#1652f0':'' }}>{data.icon}</span>
-          <h3 style={{color:status===`${data.tabText}`?'#1652f0':'' }}>{data.tabText}</h3>
+        <div className={styles.tab} onClick={()=>handleNavigate(data.link)} key={data.link}>
+          <span className='material-icons' style={{color:status===`${data.tabText}`?'#1652f0':iconColor }}>{data.icon}</span>
+          <h3 style={{color:status===`${data.tabText}`?'#1652f0':textColor }}>{data.tabText}</h3>
         </div>
 
       )}

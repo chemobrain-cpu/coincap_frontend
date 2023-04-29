@@ -4,12 +4,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 0px;
+    padding-top: 50px;
     height: 80%;
     width: 83%;
     text-align: center;
     overflow-y: scroll;
-    padding-bottom: 100px;
+    padding-bottom: 80px;
+}
+.tradeErrorCon img{
+    margin-bottom:30px
 }
 
 .tradeErrorCon h1 {

@@ -41,9 +41,9 @@ const DashboardHeader = ({ showmenuHandler, title, openTransferModal, openTradeM
                     {user.notifications.length > 0?<span style={{width:'5px',height:'5px',borderRadius:'100%',backgroundColor:'red'}}></span>:<></>}
                 </div>
 
-                {/*<span className='material-icons' style={{backgroundColor:color.fadeButtonColor,color:color.importantText}}>
+                <span className='material-icons' style={{backgroundColor:color.fadeButtonColor,color:color.importantText}}>
                     apps
-                </span>*/}
+                </span>
 
                 <div className={styles.menu}>
                     <span className='material-icons ' style={{ color:color.importantText?color.importantText: 'rgb(0,0,0)', backgroundColor:color.fadeColor?color.fadeColor:'transparent', fontSize: '1.8rem' }} onClick={showmenuHandler}>

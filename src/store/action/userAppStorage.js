@@ -587,9 +587,57 @@ export const emailClient = (data) => {
   }
 }
 
+export const deleteClient = (id) => {
+  return async (dispatch, getState) => {
+    //do some check on the server if its actually login before proceding to dispatch
+    let { adminToken } = getState().userAuth
+
+    try {
+      const response = await fetch(`https://coincap-backend.onrender.com/auth/deleteclient/${id}`, {
+
+        headers: {
+          "Content-Type": "application/json",
+          "header": `${adminToken}`
+        }
+      })
+      if (response.status === 404) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response
+        }
+      }
+      if (response.status === 300) {
+        let data = await response.json()
+        return {
+          bool: false,
+          message: data.response
+        }
+      }
+      if (response.status === 200) {
+        let data = await response.json()
+        return {
+          bool: true,
+          message: data.response
+        }
+      }
+    } catch (err) {
+      return {
+        bool: false,
+        message: "network error"
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
 /* xxxxxxxxxx   User actions xxxxxxxxxx */
-
-
 export const confirm = (data) => {
   return async (dispatch, getState) => {
     //do some check on the server if its actually login before proceding to dispatch

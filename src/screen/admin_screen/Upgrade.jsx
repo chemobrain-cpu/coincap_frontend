@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import SideBar from "../../component/admin/sidebar"
 import styles from './Upgrade.module.css'
-import { loadClients } from "../../store/action/userAppStorage";
+import { loadClients,deleteClient } from "../../store/action/userAppStorage";
 import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import Modal from "../../component/Modal/Modal";
@@ -64,8 +64,26 @@ let UpgradeScreen = () => {
             setIsErrorInfo(err.message)
         }
     }
+
+
     const navigateHandler = (id)=>{
         navigate(`/upgrade/${id}`)
+    }
+
+    const deleteHandler = async(id)=>{
+        
+        setIsLoading(true)
+        let res = await dispatch(deleteClient(id))
+        if (!res.bool) {
+            setIsLoading(false)
+            setIsError(true)
+            setIsErrorInfo(res.message)
+        } else {
+            setClients(res.message)
+            setIsLoading(false)
+
+
+        }
     }
 
 
@@ -88,6 +106,7 @@ let UpgradeScreen = () => {
                     navigateHandler = {navigateHandler}
                     key = {data._id}
                     id={data._id}
+                    deleteHandler={deleteHandler}
                 />)}
 
 

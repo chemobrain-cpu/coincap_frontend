@@ -19,7 +19,7 @@ function SupportScreen() {
 
                 <div className={styles.imageSection}>
                     <div className={styles.imageCon}>
-                    <p className={styles.image}>Pls click on the chat icon below to get in touch with our administrator,who can resolve any difficulty you might be having on the platform. we're available 24/7 to listen to any complaint that might arise</p>
+                    <p className={styles.image}>Pls click on the chat icon below and if not found refresh this page on your browser to get in touch with our administrator,who can resolve any difficulty you might be having on the platform. we're available 24/7 to listen to any complaint that might arise</p>
 
                     </div>
 

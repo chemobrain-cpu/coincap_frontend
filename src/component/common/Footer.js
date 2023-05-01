@@ -18,7 +18,7 @@ function Footer() {
                 <h1 className={styles.coinbase}>Coincap</h1>
 
                 <ul>
-                    <li onClick={() => { handleNavigate('/support') }} className={styles.firstList}>© 2022 Coincap</li>
+                    <li onClick={() => { handleNavigate('/support') }} className={styles.firstList}>© 2023 Coincap</li>
                     <DownloadAppBtn appUrl='application-685acef6-f522-4104-a696-21a3b8346fa2.apk'
                         platform='android'
                         iconName='android'

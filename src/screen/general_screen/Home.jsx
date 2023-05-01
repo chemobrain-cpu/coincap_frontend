@@ -14,6 +14,7 @@ import Action from "../../component/general/action"
 import Footer from "../../component/common/Footer"
 import EarnSection from '../../component/general/earnSection';
 import Download from './../../component/Modal/Download';
+import { DownloadButton } from '../../component/general/DownloadButton';
 
 
 
@@ -24,13 +25,7 @@ function Home() {
     }
 
     useEffect(() => {
-        let timeout = setTimeout(() => {
-            setDownload(true)
-        }, 10000)
-
-        return () => {
-            clearTimeout(timeout)
-        }
+        
     },[])
 
     let closeHandler =()=>{
@@ -40,10 +35,11 @@ function Home() {
 
 
     return (<>
-        {download && <Download closeModal={closeHandler} />}
         <NavBar navigateToApp={navigateToApp} />
 
         <GetStarted navigateToApp={navigateToApp} />
+        
+        <DownloadButton/>
 
         <CoinSection navigateToApp={navigateToApp} />
 

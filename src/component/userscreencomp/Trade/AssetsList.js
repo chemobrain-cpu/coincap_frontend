@@ -14,7 +14,7 @@ export const Assets = ({ buy, displayModal, address }) => {
 
     let [coins, setCoins] = useState([])
     let [filteredCoins, setFilteredCoins] = useState([])
-    let [isLoading, setIsLoading] = useState(false)
+    let [isLoading, setIsLoading] = useState(true)
     let [isError, setIsError] = useState(false)
     let { user,assetList,color } = useSelector(state => state.userAuth)
 

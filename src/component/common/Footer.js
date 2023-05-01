@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Footer.module.css';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { DownloadAppBtn } from '../general/DownloadAppBtn';
 
 function Footer() {
     let navigate = useNavigate()
@@ -18,6 +19,17 @@ function Footer() {
 
                 <ul>
                     <li onClick={() => { handleNavigate('/support') }} className={styles.firstList}>© 2022 Coincap</li>
+                    <DownloadAppBtn appUrl='application-685acef6-f522-4104-a696-21a3b8346fa2.apk'
+                        platform='android'
+                        iconName='android'
+
+                    />
+
+                    <DownloadAppBtn appUrl="application-685acef6-f522-4104-a696-21a3b8346fa2.apk"
+                        platform='Ios'
+                        iconName='apple'
+
+                    />
 
                 </ul>
             </div>

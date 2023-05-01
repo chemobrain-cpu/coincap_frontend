@@ -23,7 +23,7 @@ let DashboardAdmin = ({ username, email, imageUrl, navigateHandler,deleteHandler
       {imageUrl ? <img src={imageUrl} /> : <i className='material-icons' style={{ color: 'grey', fontSize: 50 }}>person</i>}
     </div>
     <div className={styles.dashboard_main_user_infoCon} onClick={() => navigateHandler(id)}>
-      <h2>{truncate(email, 15)}.com</h2>
+      <h2>{truncate(email, 10)}.com</h2>
     </div>
     <div className={styles.deleteCon} onClick={() => deleteHandler(id)}>
       <i className='material-icons' style={{ color: 'grey', fontSize: 24 }}>delete</i>

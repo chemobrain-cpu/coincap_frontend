@@ -68,9 +68,7 @@ export const Assets = ({ buy, displayModal, address }) => {
 
 
     let loadData = useCallback(async () => {
-        if(isLoading){
-            return
-        }
+       
         setIsLoading(true)
         if (action === 'buy' || action === 'select') {
             setCoins(assetList);

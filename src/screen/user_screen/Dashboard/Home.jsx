@@ -34,11 +34,19 @@ const DashboardHome = () => {
 
 
    useEffect(()=>{
-    toast('Welcome to coincaps.Top up your account and start trading now if your account is low!',{
+    /*toast('Welcome to coincaps.Top up your account and start trading now if your account is low!',{
       autoClose:20000,
       theme:`${color.background?'light':'dark'}`,
       hideProgressBar:true
-    })
+
+
+
+      <ToastContainer
+  autoClose={20000} theme='dark'
+  hideProgressBar={true}>
+
+  </ToastContainer>
+    })*/
 
   },[toast])
 
@@ -64,11 +72,7 @@ const DashboardHome = () => {
 
 
   return (<>
-  <ToastContainer
-  autoClose={20000} theme='dark'
-  hideProgressBar={true}>
-
-  </ToastContainer>
+  
     {isOpenTransferModal && <TransferModal closeModal={closeModal}/>}
     {isOpenTradeModal && <TradeModal closeModal={closeModal}/>}
 

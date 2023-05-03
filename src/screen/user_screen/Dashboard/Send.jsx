@@ -10,6 +10,8 @@ import Modal from './../../../component/Modal/Modal';
 import moment from 'moment';
 import SettingSidebar from './../../../component/userscreencomp/settingSideBar';
 
+import { useSelector } from "react-redux";
+
 
 
 const Send = () => {
@@ -18,6 +20,8 @@ const Send = () => {
   let [isOpenTransferModal, setIsOpenTransferModal] = useState(false)
    let [isOpenTransactionModal, setIsOpenTransactionModal] = useState(false)
   let [isOpenTransactionModalContent, setIsOpenTransactionModalContent] = useState('')
+  
+  let { color } = useSelector(state => state.userAuth)
 
 
    //for transfer and trade modal
@@ -65,7 +69,7 @@ const Send = () => {
     {isOpenTransferModal && <TransferModal closeModal={closeModal}/>}
     {isOpenTradeModal && <TradeModal closeModal={closeModal}/>}
     {isOpenTransactionModal && <Modal content={isOpenTransactionModalContent} closeModal={closeModal}/>}
-    <div className={styles.dashboard}>
+    <div className={styles.dashboard} style={{backgroundColor:color.background}}>
     <div className={styles.sidebar}>
       <SettingSidebar status='' />
     </div>

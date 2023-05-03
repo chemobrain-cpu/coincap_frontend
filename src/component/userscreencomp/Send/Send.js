@@ -63,8 +63,10 @@ export const SendComponent = ({ openTransactionModal }) => {
     }
 
 
+
+
     return (<>
-        {isLoading && <Loader />}
+        {isLoading && <div style={{ height: '100vh', backgroundColor: color.background }}><Loader /></div>}
         {!isLoading && <div className={styles.sendScreen} style={{ height: '89vh', backgroundColor: color.background }}>
 
             <div className={styles.pay}>

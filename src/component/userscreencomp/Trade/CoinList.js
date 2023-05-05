@@ -16,7 +16,7 @@ export const Coinlist = ({ filteredCoins, searchHandler, selectHandler, navigate
     
     let emptyRender = () => {
         return (<div className={styles.emptyScreen}>
-            <h2>No crypto found</h2>
+            <h2 style={{color:color.importantText}}>No crypto found</h2>
         </div>)
     }
 

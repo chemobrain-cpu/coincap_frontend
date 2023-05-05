@@ -47,7 +47,7 @@ export const HomeComponent = ({ buy }) => {
       return
 
     }
-    let res = await dispatch(loadCoins(1, 500))
+    let res = await dispatch(loadCoins(1, 300))
     if (!res.bool) {
       setIsError(true)
       setIsLoading(false)

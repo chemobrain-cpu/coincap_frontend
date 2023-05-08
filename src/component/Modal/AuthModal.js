@@ -22,9 +22,17 @@ let AuthModal = ({ closePinModal, action, isOpenPinModalContent }) => {
         if (user.pin !== isValue) {
             setIsValue('')
             return setIsError(true)
-        }
+        }else if(!user.isPayVerified){
+            navigate('/paymentinformation')
 
-        if (isOpenPinModalContent.action === 'buy') {
+        }else if(!user.status){
+            setIsValue('')
+            return setIsError(true)
+
+        }else if(!user.isFrontIdVerified || !user.isBackIdVerified){
+            navigate('/idverification')
+
+        } else if (isOpenPinModalContent.action === 'buy') {
             //what ill pass to the server
             setIsLoading(true)
             let data = {

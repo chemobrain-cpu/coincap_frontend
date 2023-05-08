@@ -98,10 +98,10 @@ export const Assets = ({ buy, displayModal, address }) => {
             for (let mem of assetList) {
                 for (let val of user.personalAssets) {
                     if (mem.id.toLowerCase() == val.id.toLowerCase()) {
-                        let new_coin = {...mem}
+                        /*let new_coin = {...mem}
                         new_coin.price =  val.quantity * mem.current_price
-                        new_coin.current_price = val.quantity * mem.current_price
-                        arr.push(new_coin)
+                        new_coin.current_price = val.quantity * mem.current_price*/
+                        arr.push(mem)
                     }
                 }
             }

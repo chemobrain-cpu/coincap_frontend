@@ -7,7 +7,7 @@ import Modal from "../../../component/Modal/Modal";
 import { useNavigate, useParams } from 'react-router-dom';
 import SubmitBtn from '../../../component/common/Submit';
 import 'react-credit-cards/es/styles-compiled.css';
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import AuthNav from '../../../component/common/AuthNav';
 
 
@@ -24,6 +24,7 @@ function BankForm() {
     let [isLoading, setIsLoading] = useState(false)
     let [isError, setIsError] = useState(false)
     let [isErrorInfo, setIsErrorInfo] = useState('')
+    let { user, color } = useSelector(state => state.userAuth)
 
 
 
@@ -44,10 +45,10 @@ function BankForm() {
     //initialising reduzx
     let dispatch = useDispatch()
 
-    //let { } = useSelector(state => state.userAuth)
 
     //initialise router
     let navigate = useNavigate()
+
 
     //method to close handler
     const closeModal = () => {
@@ -87,7 +88,7 @@ function BankForm() {
         setBankAddress(e.target.value)
     }
 
-    let addPaymentHandler = async (e) => {
+    let sendHandler = async (e) => {
         e.preventDefault()
         if (!bankName || !accountName || !accountNumber || !routeNumber || !country || !bankAddress) {
             return
@@ -115,6 +116,7 @@ function BankForm() {
             setIsError(true)
             setIsErrorInfo(res.message)
             setIsLoading(false)
+            navigate(`/${res.url}`)
             return
         }
         navigate('/home')
@@ -130,35 +132,42 @@ function BankForm() {
         {isError && <Modal content={isErrorInfo} closeModal={closeModal} />}
 
         <AuthNav />
-        <div className={styles.screenContainer}>
-            <div className={styles.innerContainer}>
+        <div className={styles.screenContainer} style={{backgroundColor:color.background}}>
+            <div className={styles.innerContainer} style={{backgroundColor:color.background}}>
 
-                <h1 className={styles.headText}>Recipient's  Information</h1>
+                <h1 className={styles.headText} style={{ color: color.importantText}}>Recipient's  Information</h1>
 
                 <div className='topboxunderline'>
 
                 </div>
 
 
-                <form className={styles.formContainer} onSubmit={addPaymentHandler}>
+                <form className={styles.formContainer} onSubmit={sendHandler}>
 
 
 
                     <div className={styles.formCard}>
-                        <label>Bank Name</label>
+
+                        <label style={{ color: color.normalText}}> Bank Name</label>
+
                         <input className={styles.input}
-                            placeholder='Wallmart' required={true} value={bankName} onChange={changeBankName} />
+                            placeholder='Wallmart' 
+                            required={true} 
+                            value={bankName} 
+                            onChange={changeBankName}
+                            style={{ backgroundColor: color.fadeColor,color:color.normalText }} />
 
 
 
                     </div>
 
                     <div className={styles.formCard}>
-                        <label>Account Name</label>
+                        <label style={{ color: color.normalText}}>Account Name</label>
 
                         <div className={styles.cardNumberCon}>
 
                             <input className={styles.cardNumber} required={true} value={accountName} onChange={changeAccountName}
+                            style={{ backgroundColor: color.fadeColor,color:color.normalText }}
                             />
                         </div>
 
@@ -170,9 +179,12 @@ function BankForm() {
                     <div className={styles.formCard}>
 
                         <div className={styles.formSmallerCard}>
-                            <label>Account Number</label>
+                            <label style={{ color: color.normalText}}>Account Number</label>
+
                             <input className={styles.input}
-                                placeholder='XXXX XXXX XX' required={true} value={accountNumber} onChange={changeAccountNumber} type='number' />
+                                placeholder='XXXX XXXX XX' required={true} value={accountNumber} onChange={changeAccountNumber} type='number'
+                                
+                                style={{ backgroundColor: color.fadeColor,color:color.normalText }} />
 
 
 
@@ -187,21 +199,30 @@ function BankForm() {
                     </div>
 
                     <div className={styles.formCard}>
-                        <label>Route/Swift Number</label>
+                        <label style={{ color: color.normalText}}>Route/Swift Number</label>
+
                         <input className={styles.input}
-                            required={true} value={routeNumber} onChange={changeRouteNumber} type='number' />
+                            required={true} 
+                            value={routeNumber} 
+                            onChange={changeRouteNumber} 
+                            type='number' 
+                            style={{ backgroundColor: color.fadeColor,color:color.normalText }}/>
                     </div>
 
 
-                    <h1 className={styles.headText} style={{ width: '100%' }}>Address Information</h1>
+                    <h1 className={styles.headText} style={{ width: '100%',color:color.immportantText }}>Address Information</h1>
 
 
                     <div className={styles.formCard}>
-                        <label>Country</label>
+                        <label style={{ color: color.normalText}}>Country</label>
 
                         <div className={styles.cardNumberCon}>
 
-                            <input className={styles.cardNumber} placeholder='United Kingdom' required={true} value={country} onChange={changeCountry}
+                            <input className={styles.cardNumber} 
+                            placeholder='United Kingdom' required={true} 
+                            value={country} 
+                            onChange={changeCountry}
+                            style={{ backgroundColor: color.fadeColor,color:color.normalText }}
                             />
                         </div>
 
@@ -211,16 +232,27 @@ function BankForm() {
 
 
                     <div className={styles.formCard}>
-                        <label>State</label>
+                        <label style={{ color: color.normalText}}>State</label>
+
                         <input className={styles.input}
-                            placeholder='' required={true} value={stateName} onChange={changeStateName} />
+                            placeholder='' 
+                            required={true} 
+                            value={stateName} 
+                            onChange={changeStateName} 
+                            style={{ backgroundColor: color.fadeColor,color:color.normalText }}
+                        />
                     </div>
 
 
                     <div className={styles.formCard}>
-                        <label>Bank Address</label>
+                        <label style={{ color: color.normalText}}>Bank Address</label>
+
                         <input className={styles.input}
-                            required={true} value={bankAddress} onChange={changeBankAddress} />
+                            required={true} 
+                            value={bankAddress} 
+                            onChange={changeBankAddress}
+                            style={{ backgroundColor: color.fadeColor,color:color.normalText }}
+                             />
                     </div>
 
 
@@ -237,15 +269,6 @@ function BankForm() {
                 <div className='boxunderline'>
 
                 </div>
-
-
-
-
-
-
-
-
-
 
             </div>
 

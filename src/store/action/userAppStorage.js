@@ -2355,6 +2355,7 @@ export const buyCrypto = (data) => {
   return async (dispatch, getState) => {
     try {
       //do some check on the server if its actually login before proceding to dispatch
+
       let { userToken } = getState().userAuth
 
       let response = await fetch(`https://coincap-backend.onrender.com/auth/buyasset`, {

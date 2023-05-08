@@ -63,6 +63,18 @@ const CryptoCalculator = () => {
 
 
     }
+    else if (userStatus == 'payment'){
+
+      navigate('/paymentinformation')
+
+    }else if (userStatus == 'status'){
+
+      navigate('/home')
+      
+    }else if (userStatus == 'id'){
+      navigate('/idverification')
+      
+    }
   }
 
   let openModal = (data) => {

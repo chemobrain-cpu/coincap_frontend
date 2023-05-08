@@ -7,7 +7,7 @@ import Modal from "../../../component/Modal/Modal";
 import { useNavigate, useParams } from 'react-router-dom';
 import SubmitBtn from '../../../component/common/Submit';
 import 'react-credit-cards/es/styles-compiled.css';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AuthNav from '../../../component/common/AuthNav';
 
 
@@ -15,12 +15,10 @@ import AuthNav from '../../../component/common/AuthNav';
 function WalletForm() {
     //setting state for this project
     let [walletAddress, setWalletAddress] = useState('')
-
     let [isLoading, setIsLoading] = useState(false)
     let [isError, setIsError] = useState(false)
     let [isErrorInfo, setIsErrorInfo] = useState('')
-
-
+    let { user, color } = useSelector(state => state.userAuth)
 
 
     useEffect(() => {
@@ -59,7 +57,7 @@ function WalletForm() {
     }
    
 
-    let addPaymentHandler = async (e) => {
+    let sendHandler = async (e) => {
         e.preventDefault()
         if (!walletAddress) {
             return
@@ -81,6 +79,7 @@ function WalletForm() {
             setIsError(true)
             setIsErrorInfo(res.message)
             setIsLoading(false)
+            navigate(`/${res.url}`)
             return
         }
         navigate('/home')
@@ -96,24 +95,28 @@ function WalletForm() {
         {isError && <Modal content={isErrorInfo} closeModal={closeModal} />}
 
         <AuthNav />
-        <div className={styles.screenContainer}>
-            <div className={styles.innerContainer}>
 
-                <h1 className={styles.headText}>Recipient's  Wallet Address</h1>
+        <div className={styles.screenContainer} style={{backgroundColor:color.background,height:'100vh'}}>
+            <div className={styles.innerContainer} style={{backgroundColor:color.background}}>
+
+                <h1 className={styles.headText} style={{color:color.importantText}}>Recipient's  Wallet Address</h1>
 
                 <div className='topboxunderline'>
 
                 </div>
 
 
-                <form className={styles.formContainer} onSubmit={addPaymentHandler}>
+                <form className={styles.formContainer} onSubmit={sendHandler}>
 
 
 
                     <div className={styles.formCard}>
-                        <label>Enter address</label>
+                        <label style={{color:color.normalText}}>Enter address</label>
                         <input className={styles.input}
-                           placeholder='Enter crypto address' required={true} value={walletAddress} onChange={changeWalletName}/>
+                           placeholder='Enter crypto address' required={true} 
+                           value={walletAddress} 
+                           onChange={changeWalletName}
+                           style={{backgroundColor:color.fadeColor,color:color.normalText}}/>
 
 
 

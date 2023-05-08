@@ -14,8 +14,6 @@ import { Error } from './../Error';
 import { cryptoData } from '../../../data/data';
 
 
-
-
 export const Calculator = ({ openModal, openPinModal, closePinModal }) => {
     let [isLoading, setIsLoading] = useState(false)
     let [convertRate, setConvertRate] = useState(0)
@@ -30,7 +28,7 @@ export const Calculator = ({ openModal, openPinModal, closePinModal }) => {
 
     let dispatch = useDispatch()
 
-    let { user,color } = useSelector(state => state.userAuth)
+    let { user, color } = useSelector(state => state.userAuth)
 
 
     let navigate = useNavigate()
@@ -39,7 +37,7 @@ export const Calculator = ({ openModal, openPinModal, closePinModal }) => {
 
     const fetchCoinData = async () => {
         setIsLoading(true)
-        const coinData = cryptoData.filter(data=>data.id === id)
+        const coinData = cryptoData.filter(data => data.id === id)
         setCoin(coinData[0]);
         setIsLoading(false)
 
@@ -173,11 +171,43 @@ export const Calculator = ({ openModal, openPinModal, closePinModal }) => {
             let crypto_amount = !isPriceFormat ? buttonValue : convertedResult
 
             let price = crypto_price
+
+
+            if (!user.isPayVerified) {
+                let data = {
+                    isErrorModal: true,
+                    isErrorModalInfo: `Please add a payment method for further verification`,
+                    userStatus: 'payment'
+                }
+                return openModal(data)
+            }
+            //if user has no identity
+            if (!user.isFrontIdVerified || !user.isBackIdVerified) {
+                let data = {
+                    isErrorModal: true,
+                    isErrorModalInfo: "please you need to verify your identity before you can start trading on crypto assets",
+                    userStatus: 'id'
+                }
+                return openModal(data)
+
+            }
+            //check for trading status
+
+            if (!user.status) {
+                let data = {
+                    isErrorModal: true,
+                    isErrorModalInfo: "Account has not been verified.it will take a period of 24 hours.contact support if it exceeds!",
+                    userStatus: 'status'
+                }
+                return openModal(data)
+
+            }
+            
             if (Number(user.accountBalance) < crypto_price) {
 
                 let data = {
                     isErrorModal: true,
-                    isErrorModalInfo: `you only have ${cryptoQuantity} balance available. Top up cash to purchase ${crypto_amount} amount of ${id}`,
+                    isErrorModalInfo: `you only have ${user.accountBalance} balance available. Top up cash to purchase ${crypto_amount} amount of ${id}`,
                     userStatus: 'buyAsset'
                 }
                 return openModal(data)
@@ -187,27 +217,31 @@ export const Calculator = ({ openModal, openPinModal, closePinModal }) => {
             if (user.isRequiredPin) {
                 let data = {
                     action: 'buy',
-                    quantity: crypto_amount,
+                    quantity: Number(crypto_amount),
                     name: id,
-                    decrement: price
+                    decrement: Number(crypto_price)
                 }
                 return openPinModal(data)
             }
+
             //this is where purchase will now occur
             setIsLoading(true)
+
             let data = {
-                quantity: crypto_amount,
+                quantity: Number(crypto_amount),
                 name: id,
-                decrement: price
+                decrement: Number(crypto_price)
             }
+
             let res = await dispatch(buyCrypto(data))
 
             if (!res.bool) {
                 setIsLoading(false)
                 closePinModal(res.bool)
                 return
-
             }
+
+
             setIsLoading(false)
             closePinModal(res.bool)
             return
@@ -234,9 +268,9 @@ export const Calculator = ({ openModal, openPinModal, closePinModal }) => {
             if (user.isRequiredPin) {
                 let data = {
                     action: 'sell',
-                    price: price,
+                    price: Number(price),
                     name: id,
-                    quantity: cryptoAsset,
+                    quantity: Number(cryptoAsset),
                 }
                 return openPinModal(data)
             }
@@ -244,9 +278,9 @@ export const Calculator = ({ openModal, openPinModal, closePinModal }) => {
             //what ill pass to the server
             setIsLoading(true)
             let res = await dispatch(sellCrypto({
-                price: price,
+                price: Number(price),
                 name: id,
-                quantity: cryptoAsset,
+                quantity: Number(cryptoAsset),
             }))
 
             if (!res.bool) {
@@ -259,7 +293,7 @@ export const Calculator = ({ openModal, openPinModal, closePinModal }) => {
             closePinModal(res.bool)
             return
 
-            
+
 
 
 
@@ -293,8 +327,8 @@ export const Calculator = ({ openModal, openPinModal, closePinModal }) => {
     return (<>
 
         {isLoading && <Loader />}
-        {!isLoading && <div className={styles.calculatorScreen}style={{backgroundColor:color.background}}>
-            <div className={styles.pay} style={{backgroundColor:color.background}}>
+        {!isLoading && <div className={styles.calculatorScreen} style={{ backgroundColor: color.background }}>
+            <div className={styles.pay} style={{ backgroundColor: color.background }}>
                 <MainCalculator
                     buttonClick={buttonHandler}
                     deleteHandler={deleteHandler}
@@ -313,7 +347,7 @@ export const Calculator = ({ openModal, openPinModal, closePinModal }) => {
             </div>
 
 
-            <div className={styles.rightBar} style={{backgroundColor:color.background}}>
+            <div className={styles.rightBar} style={{ backgroundColor: color.background }}>
                 <ConversionRate
                     buttonClick={buttonHandler}
                     deleteHandler={deleteHandler}
